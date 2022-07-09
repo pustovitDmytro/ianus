@@ -1,4 +1,4 @@
-# npm-boilerplate
+# ianus
 Boilerplate for creating npm packages.
 
 [![Version][badge-vers]][npm]
@@ -39,63 +39,72 @@ Package is [continuously tested][node-ver-test-url] on darwin, linux and win32 p
 
 ## Installation
 
-To install the library run the following command
+Use next docker images:
 
 ```bash
-  npm i --save npm-boilerplate
+  docker pull pustovitdmytro/ianus-worker
+  docker pull pustovitdmytro/ianus-admin
 ```
 
 ## Usage
 
-```javascript
+Run admin panel
+```bash
+  docker run -p 3000:8010 --env-file .env pustovitdmytro/ianus-admin:latest
+```
 
+Open localhost:3000
+
+Run worker
+```bash
+  docker run --env-file .env pustovitdmytro/ianus-worker:latest
 ```
 
 ## Contribute
 
 Make the changes to the code and tests. Then commit to your branch. Be sure to follow the commit message conventions. Read [Contributing Guidelines](.github/CONTRIBUTING.md) for details.
 
-[npm]: https://www.npmjs.com/package/npm-boilerplate
-[github]: https://github.com/pustovitDmytro/npm-boilerplate
-[coveralls]: https://coveralls.io/github/pustovitDmytro/npm-boilerplate?branch=master
-[badge-deps]: https://img.shields.io/librariesio/release/npm/npm-boilerplate.svg
-[badge-vers]: https://img.shields.io/npm/v/npm-boilerplate.svg
-[badge-lic]: https://img.shields.io/github/license/pustovitDmytro/npm-boilerplate.svg
-[badge-coverage]: https://coveralls.io/repos/github/pustovitDmytro/npm-boilerplate/badge.svg?branch=master
-[url-coverage]: https://coveralls.io/github/pustovitDmytro/npm-boilerplate?branch=master
+[npm]: https://www.npmjs.com/package/ianus
+[github]: https://github.com/pustovitDmytro/ianus
+[coveralls]: https://coveralls.io/github/pustovitDmytro/ianus?branch=master
+[badge-deps]: https://img.shields.io/librariesio/release/npm/ianus.svg
+[badge-vers]: https://img.shields.io/npm/v/ianus.svg
+[badge-lic]: https://img.shields.io/github/license/pustovitDmytro/ianus.svg
+[badge-coverage]: https://coveralls.io/repos/github/pustovitDmytro/ianus/badge.svg?branch=master
+[url-coverage]: https://coveralls.io/github/pustovitDmytro/ianus?branch=master
 
-[snyk-badge]: https://snyk-widget.herokuapp.com/badge/npm/npm-boilerplate/badge.svg
-[snyk-url]: https://snyk.io/advisor/npm-package/npm-boilerplate
+[snyk-badge]: https://snyk-widget.herokuapp.com/badge/npm/ianus/badge.svg
+[snyk-url]: https://snyk.io/advisor/npm-package/ianus
 
-[tests-badge]: https://img.shields.io/circleci/build/github/pustovitDmytro/npm-boilerplate
-[tests-url]: https://app.circleci.com/pipelines/github/pustovitDmytro/npm-boilerplate
+[tests-badge]: https://img.shields.io/circleci/build/github/pustovitDmytro/ianus
+[tests-url]: https://app.circleci.com/pipelines/github/pustovitDmytro/ianus
 
-[codefactor-badge]: https://www.codefactor.io/repository/github/pustovitdmytro/npm-boilerplate/badge
-[codefactor-url]: https://www.codefactor.io/repository/github/pustovitdmytro/npm-boilerplate
+[codefactor-badge]: https://www.codefactor.io/repository/github/pustovitdmytro/ianus/badge
+[codefactor-url]: https://www.codefactor.io/repository/github/pustovitdmytro/ianus
 
-[commit-activity-badge]: https://img.shields.io/github/commit-activity/m/pustovitDmytro/npm-boilerplate
+[commit-activity-badge]: https://img.shields.io/github/commit-activity/m/pustovitDmytro/ianus
 
-[scrutinizer-badge]: https://scrutinizer-ci.com/g/pustovitDmytro/npm-boilerplate/badges/quality-score.png?b=master
-[scrutinizer-url]: https://scrutinizer-ci.com/g/pustovitDmytro/npm-boilerplate/?branch=master
+[scrutinizer-badge]: https://scrutinizer-ci.com/g/pustovitDmytro/ianus/badges/quality-score.png?b=master
+[scrutinizer-url]: https://scrutinizer-ci.com/g/pustovitDmytro/ianus/?branch=master
 
-[lgtm-lg-badge]: https://img.shields.io/lgtm/grade/javascript/g/pustovitDmytro/npm-boilerplate.svg?logo=lgtm&logoWidth=18
-[lgtm-lg-url]: https://lgtm.com/projects/g/pustovitDmytro/npm-boilerplate/context:javascript
+[lgtm-lg-badge]: https://img.shields.io/lgtm/grade/javascript/g/pustovitDmytro/ianus.svg?logo=lgtm&logoWidth=18
+[lgtm-lg-url]: https://lgtm.com/projects/g/pustovitDmytro/ianus/context:javascript
 
-[lgtm-alerts-badge]: https://img.shields.io/lgtm/alerts/g/pustovitDmytro/npm-boilerplate.svg?logo=lgtm&logoWidth=18
-[lgtm-alerts-url]: https://lgtm.com/projects/g/pustovitDmytro/npm-boilerplate/alerts/
+[lgtm-alerts-badge]: https://img.shields.io/lgtm/alerts/g/pustovitDmytro/ianus.svg?logo=lgtm&logoWidth=18
+[lgtm-alerts-url]: https://lgtm.com/projects/g/pustovitDmytro/ianus/alerts/
 
 [codacy-badge]: https://app.codacy.com/project/badge/Grade/8667aa23afaa4725854f098c4b5e8890
-[codacy-url]: https://www.codacy.com/gh/pustovitDmytro/npm-boilerplate/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pustovitDmytro/npm-boilerplate&amp;utm_campaign=Badge_Grade
+[codacy-url]: https://www.codacy.com/gh/pustovitDmytro/ianus/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pustovitDmytro/ianus&amp;utm_campaign=Badge_Grade
 
-[sonarcloud-badge]: https://sonarcloud.io/api/project_badges/measure?project=pustovitDmytro_npm-boilerplate&metric=alert_status
-[sonarcloud-url]: https://sonarcloud.io/dashboard?id=pustovitDmytro_npm-boilerplate
+[sonarcloud-badge]: https://sonarcloud.io/api/project_badges/measure?project=pustovitDmytro_ianus&metric=alert_status
+[sonarcloud-url]: https://sonarcloud.io/dashboard?id=pustovitDmytro_ianus
 
-[npm-downloads-badge]: https://img.shields.io/npm/dw/npm-boilerplate
-[npm-size-badge]: https://img.shields.io/bundlephobia/min/npm-boilerplate
-[npm-size-url]: https://bundlephobia.com/result?p=npm-boilerplate
+[npm-downloads-badge]: https://img.shields.io/npm/dw/ianus
+[npm-size-badge]: https://img.shields.io/bundlephobia/min/ianus
+[npm-size-url]: https://bundlephobia.com/result?p=ianus
 
-[node-ver-test-badge]: https://github.com/pustovitDmytro/npm-boilerplate/actions/workflows/npt.yml/badge.svg?branch=master
-[node-ver-test-url]: https://github.com/pustovitDmytro/npm-boilerplate/actions?query=workflow%3A%22Node.js+versions%22
+[node-ver-test-badge]: https://github.com/pustovitDmytro/ianus/actions/workflows/npt.yml/badge.svg?branch=master
+[node-ver-test-url]: https://github.com/pustovitDmytro/ianus/actions?query=workflow%3A%22Node.js+versions%22
 
-[fossa-badge]: https://app.fossa.com/api/projects/custom%2B24828%2Fnpm-boilerplate.svg?type=shield
-[fossa-url]: https://app.fossa.com/projects/custom%2B24828%2Fnpm-boilerplate?ref=badge_shield
+[fossa-badge]: https://app.fossa.com/api/projects/custom%2B24828%2Fianus.svg?type=shield
+[fossa-url]: https://app.fossa.com/projects/custom%2B24828%2Fianus?ref=badge_shield

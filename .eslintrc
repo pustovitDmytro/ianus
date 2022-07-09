@@ -1,5 +1,8 @@
 {
     "extends": [
         "incredible"
-    ]
+    ],
+    "rules":{
+        "unicorn/filename-case": 0
+    }
 }

@@ -1,0 +1,15 @@
+Hey, I've found something interesting. 
+Binance <b>P2P Alert</b> for <%=params.tradeType%> <b><%=params.asset%></b> for <b><%=params.fiat%></b> hit the target <%=user.limit%>. 
+
+<%if(results.length>MAX_RESULTS){-%>
+Top <%=MAX_RESULTS%> (of <%=results.length%>) positions:
+<% } else { -%>
+<%=results.length%> advertisements found:
+<% } -%>
+<% for(const adv of results.slice(0, MAX_RESULTS)) {-%>
+
+  <b>Price:</b> <%=adv.price%> <%=adv.fiat%>
+  <i>Limits:</i> from <%=adv.amount.min%> to <%=adv.amount.max%> 
+  <i>Advertiser:</i>  <%=adv.advertiser.nick%> <code>  <%=adv.advertiser.count%>/<%=(adv.advertiser.rate*100).toPrecision(3)%>%</code>
+  <i>Trade methods:</i> <%=adv.tradeMethods.join(' ')%>
+<% } -%>
