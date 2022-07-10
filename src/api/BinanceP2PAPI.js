@@ -24,8 +24,9 @@ export default class BinanceAPI extends BaseAPI {
 
         if (!res.success) throw new Error(res.message);
         const items = res.data.map(item => dumpP2P(item));
+        const prevFetched = (page - 1) * PAGE_LIMIT;
 
-        if (items.length > 0 && res.total > items.length) {
+        if (items.length > 0 && (res.total > prevFetched + items.length)) {
             return [
                 ...items,
                 ...(await this.p2p({

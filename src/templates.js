@@ -29,7 +29,7 @@ export class Templates {
         this.templates = {};
     }
 
-    async load() {
+    async _load() {
         const files = await getFiles(templatesDir);
 
         const promises = files.map(async filePath => {
@@ -39,8 +39,14 @@ export class Templates {
             this.templates[rel] = ejs.compile(text);
         });
 
-
         await Promise.all(promises);
+    }
+
+    load() {
+        if (this.ready) return this.ready;
+        this.ready = this._load();
+
+        return this.ready;
     }
 
     text(templateId, data) {

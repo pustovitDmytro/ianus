@@ -1,4 +1,10 @@
 {
     "dir": "tmp/package-tests",
-    "copyDefaultFiles": true
+    "copy": [
+        [ "tests/init.js",  "tests-init.js" ],
+        [ "tests/test.env", ".env" ],
+        [ ".env.defaults", ".env.defaults" ]
+    ],
+    "copyDefaultFiles": true,
+    "modules": [ "cls-hooked", "fs-extra", "uuid", "winston", "winston-array-transport" ]
 }

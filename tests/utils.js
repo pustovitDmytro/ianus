@@ -1,4 +1,5 @@
 import path from 'path';
+import { assert } from 'chai';
 import { entry } from './constants';
 
 export function load(relPath, clearCache) {
@@ -15,4 +16,15 @@ export function load(relPath, clearCache) {
 
 export function resolve(relPath) {
     return require.resolve(path.join(entry, relPath));
+}
+
+export async function ensureError(handler) {
+    try {
+        await handler();
+        assert.fail('Expected to throw an error');
+    } catch (error)  {
+        if (error.name === 'AssertionError') throw error;
+
+        return error;
+    }
 }

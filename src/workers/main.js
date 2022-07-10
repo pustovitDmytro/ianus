@@ -10,4 +10,8 @@ export default async function () {
     const p2pjob = await binanceP2PQueue.createJob('WATCH_P2P');
 
     logger.info({ type: 'WATCH_P2P', job: p2pjob.id });
+
+    return {
+        WATCH_P2P : p2pjob.id
+    };
 }

@@ -69,6 +69,7 @@
     "eslint-plugin-unicorn": "^40.1.0",
     "husky": "^7.0.4",
     "jscpd": "^3.4.5",
+    "json-query": "^2.2.2",
     "lockfile-lint": "^4.6.2",
     "mocha": "^9.2.0",
     "mocha-junit-reporter": "^2.0.2",
@@ -76,7 +77,9 @@
     "nyc": "^15.1.0",
     "semantic-release": "^19.0.2",
     "semantic-release-telegram": "^1.5.1",
-    "uuid": "^8.3.2"
+    "supertest": "^6.2.4",
+    "uuid": "^8.3.2",
+    "winston-array-transport": "^1.1.10"
   },
   "dependencies": {
     "@bull-board/api": "^4.0.0",

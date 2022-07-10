@@ -5,7 +5,11 @@ defaults: &defaults
 cache-defaults: &cache-defaults
   keys:
     - -{{ checksum "package-lock.json" }}
-
+tests: &tests
+  resource_class: small
+  docker:
+    - image: circleci/node:14
+    - image: circleci/redis
 parameters:
   skip-coveralls:
     type: boolean
@@ -92,7 +96,7 @@ jobs:
             - run: *security
             - run: *security-all
   test-coverage:
-    <<: *defaults
+    <<: *tests
     steps:
       - checkout
       - restore_cache:
@@ -139,14 +143,14 @@ jobs:
       - store_artifacts:
           path: reports
   test-package:
-    <<: *defaults
+    <<: *tests
     steps:
       - checkout
       - restore_cache:
           <<: *cache-defaults
       - run: *test-package
   deploy:
-    <<: *defaults
+    <<: *tests
     steps:
       - checkout
       - when:

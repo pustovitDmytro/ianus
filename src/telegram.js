@@ -10,6 +10,7 @@ class Telegram {
     }
 
     async send(chat, templateId, data) {
+        await templates.load();
         const html = await templates.text(`${templateId}.html`, data);
 
         await this.api.sendMessage(chat, html);
