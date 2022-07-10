@@ -9,7 +9,7 @@
     "test:security": "npm audit --production && npm run test:lock",
     "test:lint": "eslint src bin tests --no-error-on-unmatched-pattern",
     "test:mocha": "mocha --config .mocharc.json 'tests/**/*test.js'",
-    "test:package": "npt test -c .package-tester.json",
+    "test:package": "npm run build:src && npt test -c .package-tester.json",
     "test:coverage": "BUILD=0 MODE=test nyc mocha --config .mocharc.json 'tests/**/*test.js'",
     "test:debt": "jscpd src --config .jscpd.json",
     "test:lock": "lockfile-lint --path package-lock.json --validate-https --allowed-hosts npm",
@@ -17,7 +17,7 @@
     "test": "npm run test:lint && npm run test:security && BUILD=1 npm run test:mocha",
     "sort-deps": "npm remove --save example; npm remove --save-dev example",
     "semantic-release": "npx semantic-release",
-    "start:local": "docker-compose -f local.docker-compose.yml up"
+    "start:local": "docker-compose -f docker/local.docker-compose.yml up"
   },
   "repository": {
     "type": "git",
@@ -45,7 +45,9 @@
     "@babel/runtime": "^7.16.7",
     "@commitlint/cli": "^16.1.0",
     "@commitlint/lint": "^16.0.0",
+    "@google/semantic-release-replace-plugin": "^1.1.0",
     "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "babel-plugin-module-resolver": "^4.1.0",
     "chai": "^4.3.4",

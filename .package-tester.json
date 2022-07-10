@@ -3,8 +3,9 @@
     "copy": [
         [ "tests/init.js",  "tests-init.js" ],
         [ "tests/test.env", ".env" ],
-        [ ".env.defaults", ".env.defaults" ]
+        [ ".env.defaults", ".env.defaults" ],
+        [ "templates", "templates" ]
     ],
     "copyDefaultFiles": true,
-    "modules": [ "cls-hooked", "fs-extra", "uuid", "winston", "winston-array-transport" ]
+    "modules": [ "cls-hooked", "fs-extra", "uuid", "winston", "winston-array-transport", "supertest" ]
 }

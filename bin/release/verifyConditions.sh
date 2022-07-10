@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker login -u $DOCKER_REGISTRY_USER -p $DOCKER_REGISTRY_PASSWORD

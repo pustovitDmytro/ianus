@@ -157,6 +157,8 @@ jobs:
           condition:
             not: << pipeline.parameters.skip-deploy >>
           steps:
+            - setup_remote_docker:
+                version: 20.10.14
             - restore_cache:
                 <<: *cache-defaults
             - run:
