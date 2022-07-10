@@ -11,13 +11,66 @@
             }
         ],
         [
-            "@semantic-release/npm",{
-                "tarballDir": "./"
+            "@google/semantic-release-replace-plugin",
+            {
+              "replacements": [
+                {
+                  "files": ["package.json"],
+                  "from": "\"version\":\\s*\".*\"",
+                  "to": "\"version\": \"${nextRelease.version}\""
+                },
+                {
+                    "files": ["docker/Admin.dockerfile", "docker/Worker.dockerfile"],
+                    "from": "FROM pustovitdmytro/ianus-base:.*",
+                    "to": "FROM pustovitdmytro/ianus-base:${nextRelease.version}"
+                }
+              ]
             }
         ],
         [
+            "@codedependant/semantic-release-docker", {
+                "dockerTags": [ "latest", "{version}", "{major}", "{major}.{minor}" ],
+                "dockerImage": "ianus-base",
+                "dockerFile": "docker/Base.dockerfile",
+                "dockerProject": "pustovitdmytro",
+                "dockerArgs": {
+                    "BUILD_DATE": "{now}",
+                    "BUILD_VERSION": "{next.version}"
+                }
+            } 
+        ],
+        [
+            "@semantic-release/exec", {
+                "prepareCmd": "./bin/retag-base.sh ${nextRelease.version}"
+            }
+        ],
+        [
+            "@codedependant/semantic-release-docker", {
+                "dockerTags": [ "latest", "{version}", "{major}", "{major}.{minor}" ],
+                "dockerImage": "ianus-admin",
+                "dockerFile": "docker/Admin.dockerfile",
+                "dockerProject": "pustovitdmytro",
+                "dockerArgs": {
+                    "BUILD_DATE": "{now}",
+                    "BUILD_VERSION": "{next.version}"
+                }
+            } 
+        ],
+        [
+            "@codedependant/semantic-release-docker", {
+                "dockerTags": [ "latest", "{version}", "{major}", "{major}.{minor}" ],
+                "dockerImage": "ianus-worker",
+                "dockerFile": "docker/Worker.dockerfile",
+                "dockerProject": "pustovitdmytro",
+                "dockerArgs": {
+                    "BUILD_DATE": "{now}",
+                    "BUILD_VERSION": "{next.version}"
+                }
+            } 
+        ],
+        [
             "@semantic-release/git", {
-                "assets": ["README.md", "CHANGELOG.md", "package.json"],
+                "assets": ["README.md", "CHANGELOG.md", "package.json", "docker/*.dockerfile"],
                 "message": "Chore: (release) add version ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
             }
         ],

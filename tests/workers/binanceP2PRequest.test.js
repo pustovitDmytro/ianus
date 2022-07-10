@@ -5,7 +5,6 @@ import { load } from '../utils';
 import { mockAPI as mockBinance, unMockAPI as unmockBinance } from '../mock/Binance';
 import { mockAPI as mockTg, unMockAPI as unmockTg } from '../mock/Telegram';
 import { Job } from '../mock/Job';
-// import seedRepositories from '../mock/seeds/repositories.json';
 
 const factory = new Test();
 const handler = load('workers/binanceP2PRequest').default;
