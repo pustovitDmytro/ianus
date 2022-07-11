@@ -1,8 +1,7 @@
 
 import templates from './templates';
 import Api from './api/TelegramAPI';
-import config from './config';
-
+import config from './etc/config';
 
 class Telegram {
     constructor(c) {

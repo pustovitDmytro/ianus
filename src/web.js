@@ -2,17 +2,17 @@ import express from 'express';
 import { createBullBoard } from '@bull-board/api';
 import { BullAdapter } from '@bull-board/api/bullAdapter';
 import { ExpressAdapter } from '@bull-board/express';
+import mongoExpress from 'mongo-express/lib/middleware';
 import packageInfo from '../package.json';
+import config from './etc/config';
+import mongoExpressConfig from './etc/mongoExpress';
 import logger from './logger';
 
 import Queue from './queues/Queue';
-import config from './config';
 
-const { redis, ...queueConfigs } = config.queue;
-
-const queues = Object.values(queueConfigs).map(conf => Queue.createQuue({
-    name : conf.name,
-    redis
+const queues = Object.values(config.queue).map(conf => Queue.createQuue({
+    name  : conf.name,
+    redis : config.redis
 }));
 
 const serverAdapter = new ExpressAdapter();
@@ -75,8 +75,14 @@ function renderHealth(req, res) {
     res.sendStatus(successCode);
 }
 
-
+app.use('/health', renderHealth);
 app.use('/admin/bull', checkBasicAuth, serverAdapter.getRouter());
 app.use('/admin/info', checkBasicAuth, renderInfo);
 
-app.use('/health', renderHealth);
+async function setupMongo() {
+    const middleware = await mongoExpress(mongoExpressConfig);
+
+    app.use('/admin/mongo', checkBasicAuth, middleware);
+}
+
+if (config.mongo) setupMongo();

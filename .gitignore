@@ -9,3 +9,4 @@ logs/*
 reports/*
 .coveralls.yml
 .env
+backups/*.json

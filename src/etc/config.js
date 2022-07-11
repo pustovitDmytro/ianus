@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import { Assembler } from 'cottus';
-import cottus from './utils/cottus';
+import cottus from '../utils/cottus';
 
 dotenv.config({ path: '.env' });
 dotenv.config({ path: '.env.defaults' });
@@ -25,14 +25,18 @@ const queueSchema = prefix => ({
 });
 
 const schema = {
+    mongo : !!e.MONGO_CONNECTION_STRING ? {
+        url : { $source: '{MONGO_CONNECTION_STRING}', $validate: [ 'required', 'url' ] },
+        db  : { $source: '{MONGO_DB_NAME}', $validate: [ 'required', 'string' ] }
+    } : null,
+    redis : {
+        port     : { $source: '{REDIS_PORT}', $validate: [ 'required', 'port' ] },
+        host     : { $source: '{REDIS_HOST}', $validate: [ 'required', 'hostname' ] },
+        db       : { $source: '{REDIS_DB}', $validate: [ 'integer' ] },
+        password : { $source: '{REDIS_PASSWORD}', $validate: [ 'string' ] },
+        username : { $source: '{REDIS_USER}', $validate: [ 'string' ] }
+    },
     queue : {
-        redis : {
-            port     : { $source: '{REDIS_PORT}', $validate: [ 'required', 'port' ] },
-            host     : { $source: '{REDIS_HOST}', $validate: [ 'required', 'hostname' ] },
-            db       : { $source: '{REDIS_DB}', $validate: [ 'integer' ] },
-            password : { $source: '{REDIS_PASSWORD}', $validate: [ 'string' ] },
-            username : { $source: '{REDIS_USER}', $validate: [ 'string' ] }
-        },
         binanceP2P     : queueSchema('BINANCE_P2P_QUEUE'),
         binanceRequest : queueSchema('BINANCE_REQUEST_QUEUE')
     },
@@ -65,15 +69,7 @@ const schema = {
 
 const assembler = new Assembler(cottus, schema);
 
-// eslint-disable-next-line import/no-mutable-exports
-let config;
-
-try {
-    assembler.parse();
-    config = assembler.run(e);
-} catch (error) {
-    throw new Error(error.message);
-}
-
+assembler.parse();
+const config = assembler.run(e);
 
 export default config;

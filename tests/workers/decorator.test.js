@@ -4,7 +4,7 @@ import { load, ensureError } from '../utils';
 
 const factory = new Test();
 const Queue = load('queues/Queue').default;
-const config = load('config').default;
+const config = load('etc/config').default;
 
 suite('Queue: decorator #redis');
 
@@ -28,7 +28,7 @@ const testQueue = new Queue({
     logLevel    : 'info',
     canProcess  : true,
 
-    redis : config.queue.redis
+    redis : config.redis
 }, {
     TEST_JOB_SUCCESS : successHandler,
     TEST_JOB_FAIL    : failHandler

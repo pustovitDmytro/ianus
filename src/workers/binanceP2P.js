@@ -1,15 +1,18 @@
 /* eslint-disable unicorn/filename-case */
-import config from '../config';
 import binanceRequestQueue from '../queues/binanceRequestQueue';
+import BinanceP2PList from '../lists/binanceP2P';
 
 function inputHash(p) {
     return `${p.asset }__${p.fiat}__${p.payTypes.join('_')}`;
 }
 
+const listLoader = new BinanceP2PList();
+
 export default async function () {
     const jobData = [];
+    const items = await listLoader.load();
 
-    for (const input of config.binanceP2PList) {
+    for (const input of items) {
         const hash = inputHash(input);
         const exist = jobData.find(j => j.hash === hash);
 

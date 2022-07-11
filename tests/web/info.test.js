@@ -1,4 +1,3 @@
-/* eslint-disable censor/no-swear */
 import { assert } from 'chai';
 import Test from '../Test';
 import request from '../request';
