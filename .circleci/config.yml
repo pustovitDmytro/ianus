@@ -80,7 +80,7 @@ jobs:
     steps:
       - checkout
       - run: *install
-      - run: *security
+      # - run: *security
       - run: *danger-pr
       - save_cache: *cache-modules
   test-security:

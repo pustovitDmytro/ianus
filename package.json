@@ -1,9 +1,10 @@
 {
   "name": "ianus",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Binance Alarms",
   "main": "./lib",
   "scripts": {
+    "preinstall": "npm i -D mongodb-query-parser@2.1.2",
     "build:src": "babel src --out-dir ./lib --copy-files",
     "coveralls": "cat ./reports/coverage/lcov.info | coveralls",
     "test:security": "npm audit --production && npm run test:lock",
