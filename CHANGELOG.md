@@ -1,3 +1,14 @@
+## [1.0.1](https://github.com/pustovitDmytro/ianus/compare/v1.0.0...v1.0.1) (2022-07-11)
+
+
+### Docs
+
+* adds usage docs #12 ([be02b18](https://github.com/pustovitDmytro/ianus/commit/be02b188a2f224237ff272ecddec7fc385b62416)), closes [#12](https://github.com/pustovitDmytro/ianus/issues/12)
+
+### Fix
+
+* handle empty job data ([7b009e0](https://github.com/pustovitDmytro/ianus/commit/7b009e0554d8b1ed451ea1859a59504b8aea7127))
+
 # 1.0.0 (2022-07-10)
 
 

@@ -2,7 +2,7 @@ import express from 'express';
 import { createBullBoard } from '@bull-board/api';
 import { BullAdapter } from '@bull-board/api/bullAdapter';
 import { ExpressAdapter } from '@bull-board/express';
-import mongoExpress from 'mongo-express/lib/middleware';
+import mongoExpress from '@pustovit/mongo-express/lib/middleware';
 import packageInfo from '../package.json';
 import config from './etc/config';
 import mongoExpressConfig from './etc/mongoExpress';
