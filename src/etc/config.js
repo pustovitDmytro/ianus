@@ -38,7 +38,8 @@ const schema = {
     },
     queue : {
         binanceP2P     : queueSchema('BINANCE_P2P_QUEUE'),
-        binanceRequest : queueSchema('BINANCE_REQUEST_QUEUE')
+        binanceRequest : queueSchema('BINANCE_REQUEST_QUEUE'),
+        sendAlarm      : queueSchema('SEND_ALARM_QUEUE')
     },
     binanceP2PList : {
         $source   : { type: 'complex_array', prefix: 'BINANCE_P2P_LIST_' },

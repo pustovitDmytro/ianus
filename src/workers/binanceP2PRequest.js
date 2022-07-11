@@ -1,6 +1,6 @@
 /* eslint-disable unicorn/filename-case */
 import BinanceP2PAPI from '../api/BinanceP2PAPI';
-import telegram from '../telegram';
+import sendAlarmQueue from '../queues/sendAlarmQueue';
 
 const api = new BinanceP2PAPI();
 
@@ -21,16 +21,20 @@ export default async function (job) {
 
     for (const user of data.users) {
         const matching = results.filter(item => item.price <= user.limit && item.advertiser.rate > MIN_RATE);
+        const userResult = { user, matching: matching.length };
 
-        res.push({ user, matching: matching.length });
         if (matching.length > 0) {
-            await telegram.send(user.tgChat, 'BinanceP2PAlarm', {
+            const alarmJob = await sendAlarmQueue.createJob('SEND_P2P_ALARM', {
                 MAX_RESULTS : 7,
                 user,
                 params,
                 results     : matching
             });
+
+            userResult.alarm = alarmJob.id;
         }
+
+        res.push(userResult);
     }
 
     return res;

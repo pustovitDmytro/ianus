@@ -40,6 +40,7 @@ export default class Queue {
         this.name = opts.name;
         this.repeat = opts.repeat;
         this.logLevel = opts.logLevel;
+        this.removeOnComplete = opts.removeOnComplete;
 
         this.queue = Queue.createQuue({
             name      : this.name,
