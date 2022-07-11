@@ -28,7 +28,7 @@ export default async function () {
 
     const jobs = [];
 
-    for (const { hash, data } of jobData) {
+    for (const { hash, ...data } of jobData) {
         const job = await binanceRequestQueue.createJob('PROCESS_P2P_REQUEST', data);
 
         jobs.push({ jobId: job.id, hash });

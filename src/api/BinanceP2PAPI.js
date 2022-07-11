@@ -1,4 +1,5 @@
 import BaseAPI from 'base-api-client';
+import { logDecorator }  from '../logger';
 
 const PAGE_LIMIT = 20;
 
@@ -11,10 +12,8 @@ export default class BinanceAPI extends BaseAPI {
         return { 'Content-Type': 'application/json' };
     }
 
-    async p2p({
-        page = 1,
-        ...params
-    } = {}) {
+    @logDecorator({ level: 'verbose' })
+    async p2p({ page = 1, ...params }) {
         const res = await this.post('/bapi/c2c/v2/friendly/c2c/adv/search',  {
             page,
             rows          : PAGE_LIMIT,
