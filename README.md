@@ -60,6 +60,34 @@ Run worker
   docker run --env-file .env pustovitdmytro/ianus-worker:latest
 ```
 
+Jobs can be managed via bull dashboard:
+![Dashboard](.docs/../docs/screenshots/bull_dashboard.png)
+
+to access dashboard, visits
+```
+  /admin/bull
+```
+
+to retrieve project information, check
+```
+  /admin/info
+```
+
+healthcheck:
+```
+  /health
+```
+
+### Administration credentials
+
+*User*: `admin`
+
+*Password*: configured via `BASIC_ADMIN_PASSWORD` variable, 'password' by default.
+
+
+**Note!** It is recomended to change default `BASIC_ADMIN_PASSWORD`.
+
+
 ## Contribute
 
 Make the changes to the code and tests. Then commit to your branch. Be sure to follow the commit message conventions. Read [Contributing Guidelines](.github/CONTRIBUTING.md) for details.
