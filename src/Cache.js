@@ -7,37 +7,50 @@ const MS_TO_SEC = 1000;
 export default class Cache {
     constructor({
         prefix,
-        redis:{ password, ...credentials },
+        redis:redisConf,
         ttl
     }) {
         this.prefix = prefix;
-        const redisConf = { ...credentials };
-
-        if (password) redisConf.password = password; // Disables node_redis: Warning
-
         this.client = createClient({
-            ...redisConf,
-            prefix
+            socket : {
+                port : redisConf.port,
+                host : redisConf.host
+            },
+            username : redisConf.username,
+            password : redisConf.password,
+            database : redisConf.database
         });
         this.ttl = ttl / MS_TO_SEC;
-        this.client.connect();
+        this.connected = false;
     }
 
+    async connect() {
+        if (this.connected) return;
+        await this.client.connect();
+        this.connected = true;
+    }
+
+    // TODO: client.quit() on shutdown
+
     async saveAll(keys) {
+        await this.connect();
+
         let chain = this.client.multi();
 
         for (const key of keys) {
-            chain = chain.SETEX(key, this.ttl, cachedValue);
+            chain = chain.SETEX(`${this.prefix}${key}`, this.ttl, cachedValue);
         }
 
         return chain.exec();
     }
 
     async areAllSaved(keys) {
+        await this.connect();
+
         let chain = this.client.multi();
 
         for (const key of keys) {
-            chain = chain.GET(key);
+            chain = chain.GET(`${this.prefix}${key}`);
         }
 
         const res = await chain.exec();
