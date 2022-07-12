@@ -1,3 +1,11 @@
+# [1.1.0](https://github.com/pustovitDmytro/ianus/compare/v1.0.1...v1.1.0) (2022-07-12)
+
+
+### New
+
+* adds caching ([5bfc002](https://github.com/pustovitDmytro/ianus/commit/5bfc00287507baf6f6714b7fdad37413e44b230e))
+* adds mongo storage ([3725f31](https://github.com/pustovitDmytro/ianus/commit/3725f315cb81a51a2da9d01c5f78ea4abc631da8))
+
 ## [1.0.1](https://github.com/pustovitDmytro/ianus/compare/v1.0.0...v1.0.1) (2022-07-11)
 
 
