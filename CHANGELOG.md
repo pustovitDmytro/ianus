@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/pustovitDmytro/ianus/compare/v1.1.1...v1.2.0) (2022-07-13)
+
+
+### Chore
+
+* adds tests for mongo ([8c1f72f](https://github.com/pustovitDmytro/ianus/commit/8c1f72f118a99f138a066d898758949aefca700d))
+* adds tests for sendP2Palarm worker ([24987f4](https://github.com/pustovitDmytro/ianus/commit/24987f4babf3e22e2495ded6ccceeddb908454a1))
+
+### New
+
+* add progress logs ([278a493](https://github.com/pustovitDmytro/ianus/commit/278a493ddbbd03376e3e6ad1887f0dea5fb63ed1))
+
 ## [1.1.1](https://github.com/pustovitDmytro/ianus/compare/v1.1.0...v1.1.1) (2022-07-12)
 
 
