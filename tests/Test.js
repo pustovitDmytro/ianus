@@ -4,6 +4,7 @@ import fse from 'fs-extra';
 import { getNamespace } from 'cls-hooked';
 import jsonQuery from 'json-query';
 import { MongoClient, ServerApiVersion } from 'mongodb';
+import { createClient } from 'redis';
 import { tmpFolder } from './constants';
 import { load } from './utils';
 import { trackedLogs } from './mock/utils';
@@ -32,6 +33,20 @@ export default class Test {
 
     async dropQueue() {
         await Queue.clean(true);
+
+        const client = createClient({
+            socket : {
+                port : config.redis.port,
+                host : config.redis.host
+            },
+            username : config.redis.username,
+            password : config.redis.password,
+            database : config.redis.database
+        });
+
+        await client.connect();
+        await client.FLUSHDB();
+        await client.quit();
     }
 
     async getApiCalls(query, { trace = true } = {}) {
@@ -90,4 +105,3 @@ export default class Test {
         config.mongo = false;
     }
 }
-

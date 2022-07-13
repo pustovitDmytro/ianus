@@ -2,7 +2,6 @@ import { assert } from 'chai';
 import Test from '../Test';
 import { load } from '../utils';
 import { mockAPI as mockBinance, unMockAPI as unmockBinance } from '../mock/Binance';
-import { mockAPI as mockTg, unMockAPI as unmockTg } from '../mock/Telegram';
 import { Job } from '../mock/Job';
 
 const factory = new Test();
@@ -13,7 +12,6 @@ suite('Workers: binanceP2PRequest [PROCESS_P2P_REQUEST] #redis');
 
 before(async function () {
     mockBinance();
-    mockTg();
     await factory.dropQueue();
 });
 
@@ -55,22 +53,9 @@ test('binanceP2PRequest matches found', async function () {
         { user: { limit: 1.01, tgChat: 103 }, matching: 2, 'alarm': '1' },
         { user: { limit: 1.02, tgChat: 104 }, matching: 23, 'alarm': '2' }
     ]);
-
-    // const apiCalls = await factory.getApiCalls('type=requestSent&url=sendMessage');
-
-    // assert.lengthOf(apiCalls, 2);
-    // assert.deepEqual(apiCalls.map(i => i.data.chat_id), [ 103, 104 ]);
-    // const bigMath = apiCalls.find(a => a.data.chat_id === 104);
-
-    // assert.include(bigMath.data.text, 'Top 7 (of 22) positions:');
-
-    // const smallMath = apiCalls.find(a => a.data.chat_id === 103);
-
-    // assert.include(smallMath.data.text, '2 advertisements found:');
 });
 
 after(async function () {
     await factory.dropQueue();
     unmockBinance();
-    unmockTg();
 });

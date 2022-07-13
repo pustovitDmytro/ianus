@@ -24,6 +24,12 @@ export default async function (job) {
         const userResult = { user, matching: matching.length };
 
         if (matching.length > 0) {
+            console.log(JSON.stringify({
+                MAX_RESULTS : 7,
+                user,
+                params,
+                results     : matching
+            }));
             const alarmJob = await sendAlarmQueue.createJob('SEND_P2P_ALARM', {
                 MAX_RESULTS : 7,
                 user,
