@@ -1,12 +1,14 @@
 /* eslint-disable unicorn/filename-case */
 import BinanceP2PAPI from '../api/BinanceP2PAPI';
 import sendAlarmQueue from '../queues/sendAlarmQueue';
+import ProgressNotifier from '../ProgressNotifier';
 
 const api = new BinanceP2PAPI();
 
 const MIN_RATE = 0.92;
 
 export default async function (job) {
+    const pn = new ProgressNotifier();
     const { data } = job;
 
     const params = {
@@ -17,9 +19,13 @@ export default async function (job) {
     };
     const results = await api.p2p(params);
 
+    pn.progress(0.3, `Fetched p2p data from binance: ${results.length} advertisements received`);
+
     const res = [];
 
     for (const user of data.users) {
+        const innerPn = new ProgressNotifier([ 0.3, 0.95 ], pn);
+
         const matching = results.filter(item => item.price <= user.limit && item.advertiser.rate > MIN_RATE);
         const userResult = { user, matching: matching.length };
 
@@ -40,8 +46,13 @@ export default async function (job) {
             userResult.alarm = alarmJob.id;
         }
 
+        // eslint-disable-next-line sonarjs/no-nested-template-literals
+        innerPn.progress(innerPn.arrayIncrement(data.users.length), `User ${user.tgChat} processed. ${userResult.alarm ? `Alarm [${userResult.alarm}] added` : 'no matches found'}`);
+
         res.push(userResult);
     }
+
+    pn.progress(1, `All (${data.users}) users processed`);
 
     return res;
 }

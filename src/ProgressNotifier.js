@@ -39,4 +39,10 @@ export default class ProgressNotifier {
 
         return from + ranged * completionRate;
     }
+
+    arrayIncrement(arrayLength) {
+        if (!this.counter) this.counter = 0;
+
+        return this.calcArray(arrayLength, this.counter++, 1);
+    }
 }

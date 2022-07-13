@@ -31,7 +31,7 @@ export default class Queue {
         });
     }
 
-    constructor(opts, jobs = {}) {
+    constructor(opts, jobs) {
         this.ttl = opts.ttl;
         this.attempts = opts.attempts;
         this.backoff = opts.backoff;
