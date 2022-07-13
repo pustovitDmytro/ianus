@@ -4,7 +4,7 @@ import sendAlarmQueue from '../queues/sendAlarmQueue';
 
 const api = new BinanceP2PAPI();
 
-const MIN_RATE = 0.95;
+const MIN_RATE = 0.92;
 
 export default async function (job) {
     const { data } = job;

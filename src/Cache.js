@@ -1,4 +1,3 @@
-// import ms from 'ms';
 import { createClient } from 'redis';
 
 const cachedValue = '1';

@@ -10,6 +10,10 @@ tests: &tests
   docker:
     - image: circleci/node:14
     - image: circleci/redis
+    - image: circleci/mongo
+      environment:
+          - MONGO_INITDB_ROOT_USERNAME: "admin"
+          - MONGO_INITDB_ROOT_PASSWORD: "password"
 parameters:
   skip-coveralls:
     type: boolean

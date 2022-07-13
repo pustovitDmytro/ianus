@@ -12,6 +12,13 @@ export default class BinanceAPI extends BaseAPI {
         return { 'Content-Type': 'application/json' };
     }
 
+    // https://www.binance.com/bapi/earn/v2/friendly/pos/union
+    // pageSize=15
+    // pageIndex=1
+    // status=ALL
+    // matchMyAssets=false
+    // asset=ada
+
     @logDecorator({ level: 'verbose' })
     async p2p({ page = 1, ...params }) {
         const res = await this.post('/bapi/c2c/v2/friendly/c2c/adv/search',  {

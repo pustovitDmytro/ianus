@@ -13,7 +13,7 @@ const cache = new Cache({
 export default async function (job) {
     const { data } = job;
     const { user, params, results, MAX_RESULTS } = data;
-    const hashes = results.map(r => `${user.tgChat}_${r.id}}`);
+    const hashes = results.slice(0, MAX_RESULTS).map(r => `${user.tgChat}_${r.id}}`);
 
     if (await cache.areAllSaved(hashes)) return { status: 'ALREADY_NOTIFIED' };
 

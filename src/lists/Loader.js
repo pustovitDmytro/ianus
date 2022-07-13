@@ -11,7 +11,6 @@ export default class DataLoader {
             const assembler = new Assembler(cottus, this.constructor.mongoSchema);
 
             assembler.parse();
-            console.log(raw.map(r => JSON.parse(JSON.stringify(r))));
 
             return raw.map(r => assembler.run(JSON.parse(JSON.stringify(r))));
         }
@@ -39,6 +38,7 @@ export default class DataLoader {
         const db = client.db(config.mongo.db);
 
         const collection = db.collection(this.constructor.collectionName);
+
         const cursor = await collection.find();
         const items = await cursor.toArray();
 

@@ -53,7 +53,7 @@ test('binanceP2PRequest matches found', async function () {
 
     assert.deepEqual(res, [
         { user: { limit: 1.01, tgChat: 103 }, matching: 2, 'alarm': '1' },
-        { user: { limit: 1.02, tgChat: 104 }, matching: 22, 'alarm': '2' }
+        { user: { limit: 1.02, tgChat: 104 }, matching: 23, 'alarm': '2' }
     ]);
 
     // const apiCalls = await factory.getApiCalls('type=requestSent&url=sendMessage');

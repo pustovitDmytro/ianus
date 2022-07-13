@@ -1,0 +1,24 @@
+[
+    {
+        "id": "62cc6ef0832f8c08f6b5b702",
+        "telegram_chat": 123456789,
+        "price_limit": 0.99,
+        "asset": "UAH",
+        "fiat": "UAH",
+        "pay_types": [
+            "Monobank",
+            "PrivatBank",
+            "PUMBBank"
+        ]
+    },
+    {
+        "id": "62cc6f41832f8c08f6b5b704",
+        "telegram_chat": 123456789,
+        "price_limit": 1,
+        "asset": "USDT",
+        "fiat": "USD",
+        "pay_types": [
+            "Wise"
+        ]
+    }
+]
