@@ -44,7 +44,13 @@ export function onShutdown() {
     }
 }
 
+function bullErrorHandler(error) {
+    logger.error({ service: 'ExpressAdapter', error });
+}
+
 serverAdapter.setBasePath('/admin/bull');
+serverAdapter.setErrorHandler(bullErrorHandler);
+
 const auth = { login: 'admin', password: config.web.admin.password };
 
 function checkBasicAuth(req, res, next) {
