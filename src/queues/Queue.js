@@ -3,7 +3,7 @@ import packageConfig from '../../package';
 import logger, { logDecorator }  from '../logger';
 import { getJobRunner } from '../workers/utils';
 
-const QUEUES = [];
+export const QUEUES = [];
 
 function dumpJob(job) {
     return job.toJSON();
@@ -40,7 +40,8 @@ export default class Queue {
         this.name = opts.name;
         this.repeat = opts.repeat;
         this.logLevel = opts.logLevel;
-        this.removeOnComplete = opts.removeOnComplete;
+        this.removeOnComplete = opts.autoremove === 0;
+        if (opts.autoremove) this.keepLast = opts.autoremove;
 
         this.queue = Queue.createQuue({
             name      : this.name,

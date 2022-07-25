@@ -21,7 +21,8 @@ const queueSchema = prefix => ({
     backoff    : !!e[`${prefix}_BACKOFF_TYPE`] ? {
         type  : { $source: `{${prefix}_BACKOFF_TYPE}`, $validate: [ { 'enum': [ 'exponential' ] } ] },
         delay : { $source: `{${prefix}_BACKOFF_DELAY}`, $validate: [ 'string' ] }
-    } : null
+    } : null,
+    autoremove : { $source: `{${prefix}_KEEP_LAST}`, $validate: [ 'integer', { min: 0 } ] }
 });
 
 const schema = {
@@ -39,7 +40,8 @@ const schema = {
     queue : {
         binanceP2P     : queueSchema('BINANCE_P2P_QUEUE'),
         binanceRequest : queueSchema('BINANCE_REQUEST_QUEUE'),
-        sendAlarm      : queueSchema('SEND_ALARM_QUEUE')
+        sendAlarm      : queueSchema('SEND_ALARM_QUEUE'),
+        cleanup        : queueSchema('CLEANUP_QUEUE')
     },
     binanceP2PList : {
         $source   : { type: 'complex_array', prefix: 'BINANCE_P2P_LIST_' },
