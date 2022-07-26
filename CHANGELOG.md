@@ -1,3 +1,16 @@
+# [1.3.0](https://github.com/pustovitDmytro/ianus/compare/v1.2.0...v1.3.0) (2022-07-26)
+
+
+### Chore
+
+* adds tests for signals catching ([c7023e1](https://github.com/pustovitDmytro/ianus/commit/c7023e166b586c43bc19f598c33fe0dfbbda1e7f))
+
+### New
+
+* adds bullErrorHandler ([9899449](https://github.com/pustovitDmytro/ianus/commit/9899449e4ec71ace37ee74cb6f8ec47104902e67))
+* adds cleanup job ([6f42486](https://github.com/pustovitDmytro/ianus/commit/6f42486338455c4e15dea32d78a19dbaaf57f11a))
+* adds shutdown handling ([a28aa94](https://github.com/pustovitDmytro/ianus/commit/a28aa94c3c51201e1a03ccb834dbe0e080d9587e))
+
 # [1.2.0](https://github.com/pustovitDmytro/ianus/compare/v1.1.1...v1.2.0) (2022-07-13)
 
 
