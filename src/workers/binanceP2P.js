@@ -42,7 +42,7 @@ export default async function () {
 
         const job = await binanceRequestQueue.createJob('PROCESS_P2P_REQUEST', data);
 
-        innerPn.progress(innerPn.arrayIncrement(jobData.length), `PROCESS_P2P_REQUEST job [${job.id} created for ${hash}`);
+        innerPn.progress(innerPn.arrayIncrement(jobData.length), `PROCESS_P2P_REQUEST job [${job.id}] created for ${hash}`);
 
         jobs.push({ jobId: job.id, hash });
     }

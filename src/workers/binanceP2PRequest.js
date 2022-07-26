@@ -52,7 +52,7 @@ export default async function (job) {
         res.push(userResult);
     }
 
-    pn.progress(1, `All (${data.users}) users processed`);
+    pn.progress(1, `All (${data.users.length}) users processed`);
 
     return res;
 }
