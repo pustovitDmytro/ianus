@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/pustovitDmytro/ianus/compare/v1.3.1...v1.3.2) (2022-07-26)
+
+
+### Fix
+
+* fixes cleanup sort ([e8fa18f](https://github.com/pustovitDmytro/ianus/commit/e8fa18f721500315fbcf84642ff9b58e9195c185))
+
 ## [1.3.1](https://github.com/pustovitDmytro/ianus/compare/v1.3.0...v1.3.1) (2022-07-26)
 
 
