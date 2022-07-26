@@ -7,8 +7,8 @@ import packageInfo from '../package.json';
 import config from './etc/config';
 import mongoExpressConfig from './etc/mongoExpress';
 import logger from './logger';
-
 import Queue from './queues/Queue';
+import shutdown from './shutdown';
 
 const queues = Object.values(config.queue).map(conf => Queue.createQuue({
     name  : conf.name,
@@ -35,14 +35,6 @@ if (config.web.start) {
 }
 
 export default app;
-
-export function onShutdown() {
-    if (server) {
-        return new Promise((res) => {
-            server.close(res);
-        });
-    }
-}
 
 function bullErrorHandler(error) {
     logger.error({ service: 'ExpressAdapter', error });
@@ -92,3 +84,11 @@ async function setupMongo() {
 }
 
 if (config.mongo) setupMongo();
+
+shutdown.register('Web', () => {
+    if (server) {
+        return new Promise((res) => {
+            server.close(res);
+        });
+    }
+});

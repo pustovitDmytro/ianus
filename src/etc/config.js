@@ -67,6 +67,9 @@ const schema = {
     telegram : {
         botId    : { $source: '{TELEGRAM_BOT_ID}', $validate: [ 'required', 'integer' ] },
         botToken : { $source: '{TELEGRAM_BOT_TOKEN}', $validate: [ 'required', 'string', { min: 35 }, { max: 35 } ] }
+    },
+    shutdown : {
+        forceTimeout : { $source: '{FORCE_TIMEOUT_EXIT}', $validate: [ 'required', 'time_unit' ] }
     }
 };
 

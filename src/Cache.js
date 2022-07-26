@@ -1,7 +1,9 @@
 import { createClient } from 'redis';
+import shutdown from './shutdown';
 
 const cachedValue = '1';
 const MS_TO_SEC = 1000;
+const CACHES = [];
 
 export default class Cache {
     constructor({
@@ -21,6 +23,7 @@ export default class Cache {
         });
         this.ttl = ttl / MS_TO_SEC;
         this.connected = false;
+        CACHES.push(this);
     }
 
     async connect() {
@@ -29,7 +32,12 @@ export default class Cache {
         this.connected = true;
     }
 
-    // TODO: client.quit() on shutdown
+    async close() {
+        if (!this.connected) return;
+
+        await this.client.quit();
+        this.connected = false;
+    }
 
     async saveAll(keys) {
         await this.connect();
@@ -57,3 +65,8 @@ export default class Cache {
         return res.every(r => r === cachedValue);
     }
 }
+
+shutdown.register(
+    'Caches',
+    () => Promise.all(CACHES.map(cache => cache.close()))
+);

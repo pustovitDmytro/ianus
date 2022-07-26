@@ -2,6 +2,7 @@ import Bull from 'bull';
 import packageConfig from '../../package';
 import logger, { logDecorator }  from '../logger';
 import { getJobRunner } from '../workers/utils';
+import shutdown from '../shutdown';
 
 export const QUEUES = [];
 
@@ -95,8 +96,8 @@ export default class Queue {
         return dumpJob(job);
     }
 
-    async findPendingJobs() {
-        return this.queue.getJobs([ 'waiting' ]);
+    async findCompletedJobs() {
+        return this.queue.getJobs([ 'completed' ]);
     }
 
     async close() {
@@ -141,8 +142,13 @@ export default class Queue {
     static async clean(force) {
         await Promise.all(QUEUES.map(queue => queue.clean(force)));
     }
+
+    static async reset() {
+        await Promise.all(QUEUES.map(Que => Que.queue.resume(true)));
+    }
 }
 
-export async function onShutdown() {
-    await Promise.all(QUEUES.map(queue => queue.close()));
-}
+shutdown.register(
+    'Queues',
+    () => Promise.all(QUEUES.map(queue => queue.close()))
+);

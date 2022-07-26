@@ -33,6 +33,7 @@ export default class Test {
 
     async dropQueue() {
         await Queue.clean(true);
+        await Queue.reset();
 
         const client = createClient({
             socket : {
