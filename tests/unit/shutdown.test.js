@@ -13,6 +13,7 @@ const codes = [];
 before(async function () {
     shutdown.register('test', async (code) => {
         if (code === 5) await pause(3000);
+        if (code === -1) throw new Error('Some shutdown error');
     });
     process.exit = (code) => codes.push(code);
 });
@@ -29,7 +30,14 @@ test('force shutdown', async function () {
     assert.deepEqual(codes, [ 0, 2, 2, 5 ]);
 });
 
+test('shutdown error', async function () {
+    shutdown.isShuttingDown = false;
+    await shutdown.run(-1);
+    assert.equal(codes[codes.length - 1], -1);
+});
+
 after(async function () {
+    await pause(1000);
     process.exit = old;
     shutdown.isShuttingDown = false;
 });

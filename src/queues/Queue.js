@@ -104,39 +104,32 @@ export default class Queue {
         const isConnected = this.queue.clients[0].status === 'ready';
 
         if (isConnected) {
-            await this.queue.pause(true)
-                .catch(error => logger.error({
-                    code : 'QUEUE_CLOSE',
-                    name : this.name,
-                    error
-                }));
+            await this.queue.pause(true);
         }
     }
 
     async clean(force) {
-        if (force) {
-            await this.queue.obliterate({ force });
+        await this.queue.obliterate({ force });
 
-            return { 'obliterated': true };
-        }
+        return { 'obliterated': true };
 
-        const states = [ 'active', 'paused' ];
+        // const states = [ 'active', 'paused' ];
 
-        const res = { cleaned: [] };
+        // const res = { cleaned: [] };
 
-        await Promise.all(states.map(async state => {
-            const jobs = await this.queue.getJobs([ state ]);
+        // await Promise.all(states.map(async state => {
+        //     const jobs = await this.queue.getJobs([ state ]);
 
-            res[state] = jobs.length;
-        }));
-        const minute = 60_000;
+        //     res[state] = jobs.length;
+        // }));
+        // const minute = 60_000;
 
-        await Promise.all(states.map(async state => {
-            await this.queue.clean(minute, state);
-            res.cleaned.push(state);
-        }));
+        // await Promise.all(states.map(async state => {
+        //     await this.queue.clean(minute, state);
+        //     res.cleaned.push(state);
+        // }));
 
-        return res;
+        // return res;
     }
 
     static async clean(force) {
