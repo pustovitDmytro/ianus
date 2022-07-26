@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/pustovitDmytro/ianus/compare/v1.3.0...v1.3.1) (2022-07-26)
+
+
+### Fix
+
+* fixes typo in logs ([9db4116](https://github.com/pustovitDmytro/ianus/commit/9db41162cd24e386afdef6545e73b8f9e7a58cfe))
+
 # [1.3.0](https://github.com/pustovitDmytro/ianus/compare/v1.2.0...v1.3.0) (2022-07-26)
 
 
