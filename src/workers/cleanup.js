@@ -22,7 +22,7 @@ export default async function () {
 
         pn.progress(accum += perQueue * 0.25, `Found ${jobs.length} completed jobs for ${Queue.name}`);
 
-        jobs.sort((a, b) => a.finishedOn - b.finishedOn);
+        jobs.sort((a, b) => b.finishedOn - a.finishedOn);
         const needRemove = jobs.slice(Queue.keepLast, jobs.length);
 
         pn.progress(accum += perQueue * 0.1, `${needRemove.length} jobs will be removed for ${Queue.name}`);
