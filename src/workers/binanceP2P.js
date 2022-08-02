@@ -4,7 +4,7 @@ import BinanceP2PList from '../lists/binanceP2P';
 import ProgressNotifier from '../ProgressNotifier';
 
 function inputHash(p) {
-    return `${p.asset }__${p.fiat}__${p.payTypes.join('_')}`;
+    return `${p.tradeType}__${p.asset}__${p.fiat}__${p.payTypes.join('_')}`;
 }
 
 const listLoader = new BinanceP2PList();
@@ -25,10 +25,11 @@ export default async function () {
         } else {
             jobData.push({
                 hash,
-                asset    : input.asset,
-                fiat     : input.fiat,
-                payTypes : input.payTypes,
-                users    : [ input.user ]
+                asset     : input.asset,
+                fiat      : input.fiat,
+                payTypes  : input.payTypes,
+                tradeType : input.tradeType,
+                users     : [ input.user ]
             });
         }
     }

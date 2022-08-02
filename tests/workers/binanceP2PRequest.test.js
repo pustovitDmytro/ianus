@@ -17,10 +17,11 @@ before(async function () {
 
 test('binanceP2PRequest no matches due to limits', async function () {
     const data = {
-        asset    : 'USDT',
-        fiat     : 'USD',
-        payTypes : [ 'Wise' ],
-        users    : [
+        asset     : 'USDT',
+        fiat      : 'USD',
+        payTypes  : [ 'Wise' ],
+        tradeType : 'BUY',
+        users     : [
             { limit: 1.001, tgChat: 101 },
             { limit: 1.005, tgChat: 102 }
         ]
@@ -37,10 +38,11 @@ test('binanceP2PRequest no matches due to limits', async function () {
 
 test('binanceP2PRequest matches found', async function () {
     const data = {
-        asset    : 'UAH',
-        fiat     : 'UAH',
-        payTypes : [ 'PrivatBank', 'PUMBBank' ],
-        users    : [
+        asset     : 'UAH',
+        fiat      : 'UAH',
+        tradeType : 'BUY',
+        payTypes  : [ 'PrivatBank', 'PUMBBank' ],
+        users     : [
             { limit: 1.01, tgChat: 103 },
             { limit: 1.02, tgChat: 104 }
         ]
@@ -52,6 +54,25 @@ test('binanceP2PRequest matches found', async function () {
     assert.deepEqual(res, [
         { user: { limit: 1.01, tgChat: 103 }, matching: 2, 'alarm': '1' },
         { user: { limit: 1.02, tgChat: 104 }, matching: 23, 'alarm': '2' }
+    ]);
+});
+
+test('binanceP2PRequest SELL', async function () {
+    const data = {
+        asset     : 'UAH',
+        fiat      : 'UAH',
+        tradeType : 'SELL',
+        payTypes  : [ 'PrivatBank', 'PUMBBank' ],
+        users     : [
+            { limit: 1.04, tgChat: 105 }
+        ]
+    };
+
+    const job = new Job(data);
+    const res = await handler(job);
+
+    assert.deepEqual(res, [
+        { user: { limit: 1.04, tgChat: 105 }, matching: 0 }
     ]);
 });
 

@@ -8,9 +8,10 @@ export default class BinanceP2PList extends DataLoader {
                 'tgChat' : { $source: '{_USER_TG_CHAT}', $validate: [ 'required', 'integer' ] },
                 'limit'  : { $source: '{_LIMIT}', $validate: [ 'required', 'number' ] }
             },
-            'asset'    : { $source: '{_ASSET}', $validate: [ 'required', 'string' ] },
-            'fiat'     : { $source: '{_FIAT}', $validate: [ 'required', 'string' ] },
-            'payTypes' : {
+            'tradeType' : { $source: '{_TRADE_TYPE}', $validate: [ { enum: [ 'BUY', 'SELL' ] }, { default: 'BUY' } ] },
+            'asset'     : { $source: '{_ASSET}', $validate: [ 'required', 'string' ] },
+            'fiat'      : { $source: '{_FIAT}', $validate: [ 'required', 'string' ] },
+            'payTypes'  : {
                 $source : '{_PAY_TYPES}', $validate : [ 'required', { 'split': ' ' }, { every: 'string' } ]
             }
         }
@@ -21,9 +22,10 @@ export default class BinanceP2PList extends DataLoader {
             'tgChat' : { $source: '{telegram_chat}', $validate: [ 'required', 'integer' ] },
             'limit'  : { $source: '{price_limit}', $validate: [ 'required', 'number' ] }
         },
-        'asset'    : { $source: '{asset}', $validate: [ 'required', 'string' ] },
-        'fiat'     : { $source: '{fiat}', $validate: [ 'required', 'string' ] },
-        'payTypes' : {
+        'tradeType' : { $source: '{trade_type}', $validate: [ { enum: [ 'BUY', 'SELL' ] }, { default: 'BUY' } ] },
+        'asset'     : { $source: '{asset}', $validate: [ 'required', 'string' ] },
+        'fiat'      : { $source: '{fiat}', $validate: [ 'required', 'string' ] },
+        'payTypes'  : {
             $source : '{pay_types}', $validate : [ 'required', { 'split': ',' }, { every: 'string' } ]
         }
     };

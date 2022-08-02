@@ -15,27 +15,23 @@ export default async function (job) {
         asset     : data.asset,
         fiat      : data.fiat,
         payTypes  : data.payTypes,
-        tradeType : 'BUY'
+        tradeType : data.tradeType
     };
     const results = await api.p2p(params);
 
     pn.progress(0.3, `Fetched p2p data from binance: ${results.length} advertisements received`);
 
     const res = [];
+    const sign = data.tradeType === 'BUY' ? 1 : -1;
 
     for (const user of data.users) {
         const innerPn = new ProgressNotifier([ 0.3, 0.95 ], pn);
-
-        const matching = results.filter(item => item.price <= user.limit && item.advertiser.rate > MIN_RATE);
+        const matching = results.filter(item =>
+            (item.price - user.limit) * sign <= 0
+            && item.advertiser.rate > MIN_RATE);
         const userResult = { user, matching: matching.length };
 
         if (matching.length > 0) {
-            console.log(JSON.stringify({
-                MAX_RESULTS : 7,
-                user,
-                params,
-                results     : matching
-            }));
             const alarmJob = await sendAlarmQueue.createJob('SEND_P2P_ALARM', {
                 MAX_RESULTS : 7,
                 user,

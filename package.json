@@ -90,7 +90,7 @@
     "base-api-client": "^1.5.9",
     "bull": "^4.8.4",
     "cls-hooked": "^4.2.2",
-    "cottus": "^1.10.7",
+    "cottus": "^1.10.10",
     "dayjs": "^1.11.3",
     "docopt": "^0.6.2",
     "dotenv": "^16.0.1",

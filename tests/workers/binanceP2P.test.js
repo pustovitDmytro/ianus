@@ -18,7 +18,7 @@ test('binanceP2P worker', async function () {
 
     assert.deepEqual(
         res.map(r => r.hash),
-        [ 'UAH__UAH__Monobank_PrivatBank_PUMBBank', 'USDT__USD__Wise', 'UAH__UAH__Monobank' ]
+        [ 'BUY__UAH__UAH__Monobank_PrivatBank_PUMBBank', 'BUY__USDT__USD__Wise', 'BUY__UAH__UAH__Monobank' ]
     );
 });
 

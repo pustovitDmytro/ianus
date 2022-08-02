@@ -18,16 +18,18 @@ test('BinanceLoader load data', async function () {
 
     assert.deepEqual(items, [
         {
-            user     : { tgChat: 123_456_789, limit: 0.99 },
-            asset    : 'UAH',
-            fiat     : 'UAH',
-            payTypes : [ 'Monobank', 'PrivatBank', 'PUMBBank' ]
+            user      : { tgChat: 123_456_789, limit: 0.99 },
+            tradeType : 'BUY',
+            asset     : 'UAH',
+            fiat      : 'UAH',
+            payTypes  : [ 'Monobank', 'PrivatBank', 'PUMBBank' ]
         },
         {
-            user     : { tgChat: 123_456_789, limit: 1 },
-            asset    : 'USDT',
-            fiat     : 'USD',
-            payTypes : [ 'Wise' ]
+            user      : { tgChat: 123_456_789, limit: 1 },
+            tradeType : 'BUY',
+            asset     : 'USDT',
+            fiat      : 'USD',
+            payTypes  : [ 'Wise' ]
         }
     ]);
 });
