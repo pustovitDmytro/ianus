@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/pustovitDmytro/ianus/compare/v1.4.0...v1.5.0) (2022-08-03)
+
+
+### New
+
+* adds binance earn ([a89d1a1](https://github.com/pustovitDmytro/ianus/commit/a89d1a1271d2e9bfef08e71c8f830d0beec75e5c))
+
 # [1.4.0](https://github.com/pustovitDmytro/ianus/compare/v1.3.2...v1.4.0) (2022-08-02)
 
 
