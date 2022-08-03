@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/pustovitDmytro/ianus/compare/v1.3.2...v1.4.0) (2022-08-02)
+
+
+### New
+
+* adds SELL option ([e20931b](https://github.com/pustovitDmytro/ianus/commit/e20931b323bf7f9623861ace2ba8ef448d0a076e))
+
 ## [1.3.2](https://github.com/pustovitDmytro/ianus/compare/v1.3.1...v1.3.2) (2022-07-26)
 
 
