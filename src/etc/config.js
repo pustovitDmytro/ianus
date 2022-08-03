@@ -39,6 +39,7 @@ const schema = {
     },
     queue : {
         binanceP2P     : queueSchema('BINANCE_P2P_QUEUE'),
+        binanceEarn    : queueSchema('BINANCE_EARN_QUEUE'),
         binanceRequest : queueSchema('BINANCE_REQUEST_QUEUE'),
         sendAlarm      : queueSchema('SEND_ALARM_QUEUE'),
         cleanup        : queueSchema('CLEANUP_QUEUE')

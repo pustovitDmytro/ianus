@@ -70,10 +70,11 @@ export function axiosResponse(data) {
 
 export function axiosError(message, data) {
     const err = new Error(message);
+    const e = new API_ERROR(err);
 
-    err.response = { data };
+    e.response = { data };
 
-    return new API_ERROR(err);
+    return e;
 }
 
 export function getTestTraceId() {

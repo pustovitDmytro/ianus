@@ -19,7 +19,7 @@ export default class DataLoader {
 
         assembler.parse();
 
-        return assembler.run(process.env).list;
+        return assembler.run(process.env).list || [];
     }
 
     async loadMongo() {

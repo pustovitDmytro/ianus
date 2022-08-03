@@ -1,0 +1,10 @@
+Hey, I've found something interesting. 
+Binance <b>Earn Alert</b> for <b><%=params.asset%></b> hit the target <%=user.limit%>. 
+
+<%=results.length%> projects found:
+<% for(const project of results) {-%>
+
+  <b>APY:</b> <%=(project.rate*100).toPrecision(3)%>%
+  <i>Limits:</i> from <%=project.amount.min%> to <%=project.amount.max%> 
+  <i>Duration:</i> <%=project.duration%>
+<% } -%>
