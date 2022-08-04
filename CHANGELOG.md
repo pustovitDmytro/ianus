@@ -1,3 +1,14 @@
+# [1.6.0](https://github.com/pustovitDmytro/ianus/compare/v1.5.0...v1.6.0) (2022-08-04)
+
+
+### Fix
+
+* fixes spot param name ([92ee5f5](https://github.com/pustovitDmytro/ianus/commit/92ee5f533c2ce54354dda7a0cecd6cdf8f39cf7b))
+
+### New
+
+* adds spot alerts. closes #10 ([cdf2e9a](https://github.com/pustovitDmytro/ianus/commit/cdf2e9a612bbef419277b999c6131be36f20cd28)), closes [#10](https://github.com/pustovitDmytro/ianus/issues/10)
+
 # [1.5.0](https://github.com/pustovitDmytro/ianus/compare/v1.4.0...v1.5.0) (2022-08-03)
 
 
