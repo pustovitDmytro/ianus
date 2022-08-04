@@ -1,3 +1,14 @@
+## [1.6.1](https://github.com/pustovitDmytro/ianus/compare/v1.6.0...v1.6.1) (2022-08-04)
+
+
+### Fix
+
+* reuse redis connections ([292fb2b](https://github.com/pustovitDmytro/ianus/commit/292fb2b937decdf0ae89d5650a825bbbb2b6a1b8))
+
+### Upgrade
+
+* Pin dependencies (#4) ([998d406](https://github.com/pustovitDmytro/ianus/commit/998d4062edee429856d0c3063b30f718d452b0c6)), closes [#4](https://github.com/pustovitDmytro/ianus/issues/4)
+
 # [1.6.0](https://github.com/pustovitDmytro/ianus/compare/v1.5.0...v1.6.0) (2022-08-04)
 
 
