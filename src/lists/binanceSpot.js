@@ -17,7 +17,7 @@ export default class BinanceSpotList extends DataLoader {
     static mongoSchema = {
         'user' : {
             'tgChat' : { $source: '{telegram_chat}', $validate: [ 'required', 'integer' ] },
-            'limit'  : { $source: '{apy_limit}', $validate: [ 'required', 'number' ] },
+            'limit'  : { $source: '{price_limit}', $validate: [ 'required', 'number' ] },
             'asset'  : { $source: '{asset}', $validate: [ 'required', 'string' ] },
             'type'   : { $source: '{type}', $validate: [ { enum: [ 'MORE', 'LESS' ] }, { default: 'LESS' } ] }
 
