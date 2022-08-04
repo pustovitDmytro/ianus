@@ -1,16 +1,16 @@
 #!./node_modules/.bin/babel-node
 import { docopt } from 'docopt';
 import binanceEarnRequest from '../workers/binanceEarnRequest';
+import binanceSpotRequest from '../workers/binanceSpotRequest';
 import { docoptRunner } from './utils';
 
 const doc = `Usage:
     test.js binanceEarnRequest
+    test.js binanceSpotRequest
     test.js -h | --help
 
     Options:
-        -h  --help
-        start           Start global platform worker
-        cleanup         Start cleanup job
+        -h  --help    Test workers
 `;
 
 async function testBinanceEarnRequest() {
@@ -22,9 +22,21 @@ async function testBinanceEarnRequest() {
     });
 }
 
+async function testBinanceSpotRequest() {
+    await binanceSpotRequest({
+        data : {
+            users : [ { asset: 'BTCUSDT', limit: 10_000, type: 'MORE' } ]
+        }
+    });
+}
+
 async function run(opts) {
     if (opts.binanceEarnRequest) {
         await testBinanceEarnRequest();
+    }
+
+    if (opts.binanceSpotRequest) {
+        await testBinanceSpotRequest();
     }
 }
 

@@ -5,16 +5,16 @@ import Cache from '../Cache';
 import ProgressNotifier from '../ProgressNotifier';
 
 const cache = new Cache({
-    prefix : config.cache.p2p.prefix,
-    ttl    : config.cache.p2p.ttl,
+    prefix : config.cache.spot.prefix,
+    ttl    : config.cache.spot.ttl,
     redis  : config.redis
 });
 
 export default async function (job) {
     const pn = new ProgressNotifier();
     const { data } = job;
-    const { user, params, results, MAX_RESULTS } = data;
-    const hashes = results.slice(0, MAX_RESULTS).map(r => `${user.tgChat}_${r.id}`);
+    const { user, params, results } = data;
+    const hashes = [ `${user.tgChat}_${params.asset}` ];
 
     pn.progress(0.1, 'Checking cache for saved results');
 
@@ -22,7 +22,7 @@ export default async function (job) {
 
     pn.progress(0.4, 'Found relevant results');
 
-    await telegram.send(user.tgChat, 'BinanceP2PAlarm', { MAX_RESULTS, user, params, results });
+    await telegram.send(user.tgChat, 'BinanceSpotAlarm', { user, params, results });
 
     pn.progress(0.8, 'Sent telegram notification');
 

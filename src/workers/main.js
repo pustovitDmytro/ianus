@@ -1,29 +1,29 @@
 import logger from '../logger';
 import binanceP2PQueue from '../queues/binanceP2PQueue';
 import binanceEarnQueue from '../queues/binanceEarnQueue';
+import binanceSpotQueue from '../queues/binanceSpotQueue';
 import cleanupQueue from '../queues/cleanupQueue';
 import templates from '../templates';
+
+const LIST = [
+    { queue: binanceP2PQueue, type: 'WATCH_P2P' },
+    { queue: binanceEarnQueue, type: 'WATCH_EARN' },
+    { queue: binanceSpotQueue, type: 'WATCH_SPOT' },
+    { queue: cleanupQueue, type: 'RUN_CLEANUP' }
+];
 
 export default async function () {
     logger.info('STARTING MAIN WORKER');
 
     await templates.load();
+    const result = {};
 
-    const p2pjob = await binanceP2PQueue.createJob('WATCH_P2P');
+    await Promise.all(LIST.map(async start => {
+        const job = await start.queue.createJob(start.type);
 
-    logger.info({ type: 'WATCH_P2P', job: p2pjob.id });
+        logger.info({ type: start.type, job: job.id });
+        result[start.type] = job.id;
+    }));
 
-    const earnjob = await binanceEarnQueue.createJob('WATCH_EARN');
-
-    logger.info({ type: 'WATCH_EARN', job: earnjob.id });
-
-    const cleanupJob = await cleanupQueue.createJob('RUN_CLEANUP');
-
-    logger.info({ type: 'RUN_CLEANUP', job: cleanupJob.id });
-
-    return {
-        WATCH_P2P   : p2pjob.id,
-        WATCH_EARN  : earnjob.id,
-        RUN_CLEANUP : cleanupJob.id
-    };
+    return result;
 }

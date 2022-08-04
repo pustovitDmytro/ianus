@@ -15,6 +15,9 @@ test('run main handler', async function () {
     const res = await handler();
 
     assert.include(res.WATCH_P2P, 'repeat:');
+    assert.include(res.WATCH_EARN, 'repeat:');
+    assert.include(res.WATCH_SPOT, 'repeat:');
+    assert.include(res.RUN_CLEANUP, 'repeat:');
 });
 
 after(async function () {

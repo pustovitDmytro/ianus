@@ -9,12 +9,12 @@ dayjs.extend(relativeTime);
 
 const PAGE_LIMIT = 20;
 
+@logDecorator({ level: 'verbose' })
 export default class BinanceAPI extends BaseAPI {
     constructor() {
         super('https://www.binance.com');
     }
 
-    @logDecorator({ level: 'verbose' })
     async earn({ asset }) {
         const res = await this.get('/bapi/earn/v2/friendly/pos/union', {
             status   : 'ALL',
@@ -34,6 +34,12 @@ export default class BinanceAPI extends BaseAPI {
 
         return items;
     }
+
+    async spot() {
+        const res = await this.get('/api/v3/ticker/price');
+
+        return res.map(t => dumpTicker(t));
+    }
 }
 
 
@@ -50,3 +56,9 @@ function dumpEarn(p) {
     };
 }
 
+function dumpTicker(ticker) {
+    return {
+        asset : ticker.symbol,
+        price : +ticker.price
+    };
+}

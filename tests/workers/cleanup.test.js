@@ -19,6 +19,7 @@ test('run cleanup handler', async function () {
         'binance-request'   : 0,
         'binance-p2p-main'  : 0,
         'binance-earn-main' : 0,
+        'binance-spot-main' : 0,
         'cleanup-jobs'      : 0
     });
 });

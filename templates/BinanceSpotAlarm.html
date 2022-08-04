@@ -1,0 +1,5 @@
+Hey, I've found something interesting. 
+Binance <b>Spot Alert</b> for <b><%=params.asset%></b> hit the target <%=user.limit%>. 
+<% for(const result of results) {-%>
+  <b>Price:</b> <%=result.price%>
+<% } -%>

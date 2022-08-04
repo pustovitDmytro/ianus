@@ -1,6 +1,7 @@
 import config from '../etc/config';
 import sendP2PAlarm from '../workers/sendP2PAlarm';
 import sendEarnAlarm from '../workers/sendEarnAlarm';
+import sendSpotAlarm from '../workers/sendSpotAlarm';
 import Queue from './Queue';
 
 export default new Queue({
@@ -8,5 +9,6 @@ export default new Queue({
     redis : config.redis
 }, {
     SEND_P2P_ALARM  : sendP2PAlarm,
-    SEND_EARN_ALARM : sendEarnAlarm
+    SEND_EARN_ALARM : sendEarnAlarm,
+    SEND_SPOT_ALARM : sendSpotAlarm
 });

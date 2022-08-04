@@ -3,6 +3,7 @@ import uahPage1 from './seeds/binanceP2P_UAH_page1.json';
 import uahPage2 from './seeds/binanceP2P_UAH_page2.json';
 import usd from './seeds/binanceP2P_USD.json';
 import bnb from './seeds/binanceEarn_BNB.json';
+import binanceSpot from './seeds/binanceSpot';
 
 import {
     setup,
@@ -49,6 +50,10 @@ class MockBinanceAPI extends BinanceAPI {
             }
 
             return axiosResponse(bnb);
+        }
+
+        if (opts.url.match('/api/v3/ticker/price')) {
+            return axiosResponse(binanceSpot);
         }
 
         return axiosResponse();
