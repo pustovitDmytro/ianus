@@ -48,7 +48,11 @@ export default class Cache {
             chain = chain.SETEX(`${this.prefix}${key}`, this.ttl, cachedValue);
         }
 
-        return chain.exec();
+        const res = await chain.exec();
+
+        await this.close();
+
+        return res;
     }
 
     async areAllSaved(keys) {
@@ -61,6 +65,8 @@ export default class Cache {
         }
 
         const res = await chain.exec();
+
+        await this.close();
 
         return res.every(r => r === cachedValue);
     }

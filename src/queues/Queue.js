@@ -1,4 +1,5 @@
 import Bull from 'bull';
+import Redis from 'ioredis';
 import packageConfig from '../../package';
 import logger, { logDecorator }  from '../logger';
 import { getJobRunner } from '../workers/utils';
@@ -11,6 +12,31 @@ function dumpJob(job) {
 }
 
 export default class Queue {
+    // https://docs.bullmq.io/bull/patterns/reusing-redis-connections
+    static getClient(redis, type) {
+        if (!this.clients) this.clients = {};
+
+        if (this.clients[type]) return this.clients[type];
+        const client = new Redis({
+            port     : redis.port,
+            host     : redis.host,
+            db       : redis.db,
+            password : redis.password,
+            username : redis.username || null,
+
+            maxRetriesPerRequest : null,
+            enableReadyCheck     : false
+        });
+
+        if (type === 'bclient') {
+            return client;
+        }
+
+        this.clients[type] = client;
+
+        return client;
+    }
+
     static createQuue({
         redis,
         name,
@@ -21,14 +47,11 @@ export default class Queue {
                 max      : rateLimit.max,
                 duration : rateLimit.duration
             },
-            redis : {
-                port     : redis.port,
-                host     : redis.host,
-                db       : redis.db,
-                password : redis.password,
-                username : redis.username || null
-            },
-            prefix : packageConfig.name
+            prefix : packageConfig.name,
+
+            createClient(type) {
+                return Queue.getClient(redis, type);
+            }
         });
     }
 
@@ -101,7 +124,7 @@ export default class Queue {
     }
 
     async close() {
-        const isConnected = this.queue.clients[0].status === 'ready';
+        const isConnected = this.queue.clients.some(c => c.status === 'ready');
 
         if (isConnected) {
             await this.queue.pause(true);
@@ -112,24 +135,6 @@ export default class Queue {
         await this.queue.obliterate({ force });
 
         return { 'obliterated': true };
-
-        // const states = [ 'active', 'paused' ];
-
-        // const res = { cleaned: [] };
-
-        // await Promise.all(states.map(async state => {
-        //     const jobs = await this.queue.getJobs([ state ]);
-
-        //     res[state] = jobs.length;
-        // }));
-        // const minute = 60_000;
-
-        // await Promise.all(states.map(async state => {
-        //     await this.queue.clean(minute, state);
-        //     res.cleaned.push(state);
-        // }));
-
-        // return res;
     }
 
     static async clean(force) {
