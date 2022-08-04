@@ -17,8 +17,9 @@ before(async function () {
 test('binanceSpotRequest', async function () {
     const data = {
         users : [
-            { limit: 200, tgChat: 103, asset: 'BNBBUSD' },
-            { limit: 40, tgChat: 104, asset: 'UAHUSDT', type: 'MORE' }
+            { limit: 400, tgChat: 103, asset: 'BNBBUSD', type: 'LESS' },
+            { limit: 42, tgChat: 104, asset: 'USDTUAH', type: 'MORE' },
+            { limit: 42, tgChat: 105, asset: 'BUSDUAH', type: 'LESS' }
         ]
     };
 
@@ -27,12 +28,33 @@ test('binanceSpotRequest', async function () {
 
     assert.deepEqual(res, [
         {
-            user     : { limit: 200, tgChat: 103, asset: 'BNBBUSD' },
+            user : {
+                limit  : 400,
+                tgChat : 103,
+                asset  : 'BNBBUSD',
+                type   : 'LESS'
+            },
+            matching : 1,
+            alarm    : '1'
+        },
+        {
+            user : {
+                limit  : 42,
+                tgChat : 104,
+                asset  : 'USDTUAH',
+                type   : 'MORE'
+            },
             matching : 0
         },
         {
-            user     : { limit: 40, tgChat: 104, asset: 'UAHUSDT', type: 'MORE' },
-            matching : 0
+            user : {
+                limit  : 42,
+                tgChat : 105,
+                asset  : 'BUSDUAH',
+                type   : 'LESS'
+            },
+            matching : 1,
+            alarm    : '2'
         }
     ]);
 });

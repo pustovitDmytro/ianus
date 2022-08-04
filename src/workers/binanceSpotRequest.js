@@ -18,7 +18,8 @@ export default async function (job) {
         const innerPn = new ProgressNotifier([ 0.3, 0.95 ], pn);
         const sign = user.type === 'LESS' ? 1 : -1;
 
-        const matching = results.filter(item => user.asset === item.asset && (user.limit - item.price) * sign <= 0);
+        const matching = results.filter(item => (user.asset === item.asset) && ((item.price - user.limit) * sign <= 0));
+
         const userResult = { user, matching: matching.length };
 
         if (matching.length > 0) {
