@@ -1,3 +1,10 @@
+## [1.6.3](https://github.com/pustovitDmytro/ianus/compare/v1.6.2...v1.6.3) (2022-08-09)
+
+
+### Fix
+
+* close cache redis connection on alarm job ([4fd15b0](https://github.com/pustovitDmytro/ianus/commit/4fd15b0e53a397209a90ed8f4424f7bff663e576))
+
 ## [1.6.2](https://github.com/pustovitDmytro/ianus/compare/v1.6.1...v1.6.2) (2022-08-04)
 
 
