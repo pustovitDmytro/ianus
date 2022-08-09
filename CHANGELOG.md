@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/pustovitDmytro/ianus/compare/v1.6.1...v1.6.2) (2022-08-04)
+
+
+### Fix
+
+* fixes spot sign calculations ([0407988](https://github.com/pustovitDmytro/ianus/commit/0407988ca1e0952a1ae11c07aceb713981bb03b7))
+
 ## [1.6.1](https://github.com/pustovitDmytro/ianus/compare/v1.6.0...v1.6.1) (2022-08-04)
 
 
