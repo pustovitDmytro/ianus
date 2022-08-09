@@ -28,14 +28,24 @@ export default class Cache {
 
     async connect() {
         if (this.connected) return;
-        await this.client.connect();
+
+        try {
+            await this.client.connect();
+        } catch (error) {
+            if (error.message !== 'Socket already opened') throw error;
+        }
+
         this.connected = true;
     }
 
     async close() {
         if (!this.connected) return;
+        try {
+            await this.client.quit();
+        } catch (error) {
+            if (![ 'The client is closed', 'This socket has been ended by the other party' ].includes(error.message)) throw error;
+        }
 
-        await this.client.quit();
         this.connected = false;
     }
 
@@ -48,11 +58,7 @@ export default class Cache {
             chain = chain.SETEX(`${this.prefix}${key}`, this.ttl, cachedValue);
         }
 
-        const res = await chain.exec();
-
-        await this.close();
-
-        return res;
+        return chain.exec();
     }
 
     async areAllSaved(keys) {
@@ -65,8 +71,6 @@ export default class Cache {
         }
 
         const res = await chain.exec();
-
-        await this.close();
 
         return res.every(r => r === cachedValue);
     }

@@ -28,6 +28,7 @@ export default async function (job) {
 
     await cache.saveAll(hashes);
     pn.progress(1, 'Saved in cache');
+    await cache.close();
 
     return { status: 'NOTIFIED' };
 }
