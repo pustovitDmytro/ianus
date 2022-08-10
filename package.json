@@ -89,6 +89,7 @@
     "@pustovit/mongo-express": "^1.0.0-alpha.4",
     "base-api-client": "^1.5.9",
     "bull": "4.8.5",
+    "cheerio": "^1.0.0-rc.12",
     "cls-hooked": "4.2.2",
     "cottus": "^1.10.10",
     "dayjs": "1.11.4",

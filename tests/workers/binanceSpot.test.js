@@ -16,7 +16,7 @@ test('binanceSpot worker', async function () {
     const job = new Job({});
     const res = await handler(job);
 
-    assert.deepEqual(res, 1);
+    assert.deepEqual(res, [ { jobId: '1', hash: '_' } ]);
 });
 
 
