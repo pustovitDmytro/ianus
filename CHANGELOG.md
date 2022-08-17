@@ -1,3 +1,14 @@
+# [1.7.0](https://github.com/pustovitDmytro/ianus/compare/v1.6.3...v1.7.0) (2022-08-17)
+
+
+### Chore
+
+* refactor duplicates ([88decf2](https://github.com/pustovitDmytro/ianus/commit/88decf2638817211f229a87f0676d0b728f04821))
+
+### New
+
+* adds arbitrage ([171853d](https://github.com/pustovitDmytro/ianus/commit/171853de2ec04f52d38524ee7b3e4f9a0c10a896))
+
 ## [1.6.3](https://github.com/pustovitDmytro/ianus/compare/v1.6.2...v1.6.3) (2022-08-09)
 
 
