@@ -13,7 +13,7 @@ export default async function (job, {
     const params = requestParams(data);
     const results = await request(params);
 
-    pn.progress(0.3, `Fetched data from binance: ${results.length} projects received`);
+    pn.progress(0.3, `Fetched data: ${results.length} items received`);
 
     const res = [];
 

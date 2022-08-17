@@ -1,0 +1,7 @@
+Hey, I've found something interesting. 
+<b>Arbitrage Alert</b> for sell <b><%=params.sell.provider%></b> and buy <b><%=params.buy.provider%></b> hit the target <%=(user.limit*100).toPrecision(3)%>%. 
+<% for(const result of results) {-%>
+  <b>Sell:</b> <%=result.sellPrice%> <%=params.sell.asset%>
+  <b>Buy:</b> <%=result.buyPrice%> <%=params.buy.asset%>
+  <i>Arbitrage:</i> <%=result.diff.toPrecision(3)%> <code> (<%=(result.relative*100).toPrecision(3)%>%)</code>
+<% } -%>

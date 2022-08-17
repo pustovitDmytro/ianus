@@ -15,7 +15,10 @@ export default class DataLoader {
             return raw.map(r => assembler.run(JSON.parse(JSON.stringify(r))));
         }
 
-        const assembler = new Assembler(cottus, { list: this.constructor.envSchema });
+        const assembler = new Assembler(cottus, { list : {
+            $source   : { type: 'complex_array', prefix: this.constructor.envPrefix },
+            $validate : this.constructor.envSchema
+        } });
 
         assembler.parse();
 
