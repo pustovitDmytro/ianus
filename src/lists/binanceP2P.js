@@ -1,19 +1,18 @@
 import DataLoader from './Loader';
 
 export default class BinanceP2PList extends DataLoader {
+    static envPrefix = 'BINANCE_P2P_LIST_';
+
     static envSchema = {
-        $source   : { type: 'complex_array', prefix: 'BINANCE_P2P_LIST_' },
-        $validate : {
-            'user' : {
-                'tgChat' : { $source: '{_USER_TG_CHAT}', $validate: [ 'required', 'integer' ] },
-                'limit'  : { $source: '{_LIMIT}', $validate: [ 'required', 'number' ] }
-            },
-            'tradeType' : { $source: '{_TRADE_TYPE}', $validate: [ { enum: [ 'BUY', 'SELL' ] }, { default: 'BUY' } ] },
-            'asset'     : { $source: '{_ASSET}', $validate: [ 'required', 'string' ] },
-            'fiat'      : { $source: '{_FIAT}', $validate: [ 'required', 'string' ] },
-            'payTypes'  : {
-                $source : '{_PAY_TYPES}', $validate : [ 'required', { 'split': ' ' }, { every: 'string' } ]
-            }
+        'user' : {
+            'tgChat' : { $source: '{_USER_TG_CHAT}', $validate: [ 'required', 'integer' ] },
+            'limit'  : { $source: '{_LIMIT}', $validate: [ 'required', 'number' ] }
+        },
+        'tradeType' : { $source: '{_TRADE_TYPE}', $validate: [ { enum: [ 'BUY', 'SELL' ] }, { default: 'BUY' } ] },
+        'asset'     : { $source: '{_ASSET}', $validate: [ 'required', 'string' ] },
+        'fiat'      : { $source: '{_FIAT}', $validate: [ 'required', 'string' ] },
+        'payTypes'  : {
+            $source : '{_PAY_TYPES}', $validate : [ 'required', { 'split': ' ' }, { every: 'string' } ]
         }
     };
 

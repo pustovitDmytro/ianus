@@ -69,6 +69,8 @@ aliases:
       - lib
 
 version: 2.1
+orbs:
+  aws-cli: circleci/aws-cli@3.1
 debug: true
 jobs:
   danger-pr:
@@ -168,6 +170,15 @@ jobs:
             - run:
                 name: Create Release
                 command: if [ -z ${CIRCLE_SKIP_DEPLOY+x} ]; then npm run semantic-release;else echo 'job skipped';fi
+  aws-update:
+    environment:
+      - AWS_DEFAULT_REGION: eu-west-1
+    executor: aws-cli/default
+    steps:
+      - checkout
+      - aws-cli/setup
+      - run: aws ecs update-service --cluster default --service ianus-worker --force-new-deployment
+      - run: aws ecs update-service --cluster default --service ianus-admin --force-new-deployment
 
 workflows:
   version: 2
@@ -198,6 +209,13 @@ workflows:
           requires:
             - test-coverage
             - test-package
+          filters:
+            branches:
+                only: master
+      - aws-update:
+          context: aws
+          requires:
+            - deploy
           filters:
             branches:
                 only: master

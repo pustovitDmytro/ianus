@@ -1,15 +1,14 @@
 import DataLoader from './Loader';
 
 export default class BinanceEarnList extends DataLoader {
+    static envPrefix = 'BINANCE_EARN_LIST_';
+
     static envSchema = {
-        $source   : { type: 'complex_array', prefix: 'BINANCE_EARN_LIST_' },
-        $validate : {
-            'user' : {
-                'tgChat' : { $source: '{_USER_TG_CHAT}', $validate: [ 'required', 'integer' ] },
-                'limit'  : { $source: '{_LIMIT}', $validate: [ 'required', 'number' ] }
-            },
-            'asset' : { $source: '{_ASSET}', $validate: [ 'required', 'string' ] }
-        }
+        'user' : {
+            'tgChat' : { $source: '{_USER_TG_CHAT}', $validate: [ 'required', 'integer' ] },
+            'limit'  : { $source: '{_LIMIT}', $validate: [ 'required', 'number' ] }
+        },
+        'asset' : { $source: '{_ASSET}', $validate: [ 'required', 'string' ] }
     };
 
     static mongoSchema = {

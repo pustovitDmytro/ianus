@@ -1,6 +1,6 @@
 /* eslint-disable unicorn/filename-case */
 import BinanceAPI from '../api/BinanceAPI';
-import Base from './Base/binanceRequest';
+import Base from './Base/checkRequest';
 
 const api = new BinanceAPI();
 
