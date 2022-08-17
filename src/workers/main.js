@@ -3,13 +3,15 @@ import binanceP2PQueue from '../queues/binanceP2PQueue';
 import binanceEarnQueue from '../queues/binanceEarnQueue';
 import binanceSpotQueue from '../queues/binanceSpotQueue';
 import cleanupQueue from '../queues/cleanupQueue';
+import arbitrageQueue from '../queues/arbitrageQueue';
 import templates from '../templates';
 
 const LIST = [
     { queue: binanceP2PQueue, type: 'WATCH_P2P' },
     { queue: binanceEarnQueue, type: 'WATCH_EARN' },
     { queue: binanceSpotQueue, type: 'WATCH_SPOT' },
-    { queue: cleanupQueue, type: 'RUN_CLEANUP' }
+    { queue: cleanupQueue, type: 'RUN_CLEANUP' },
+    { queue: arbitrageQueue, type: 'WATCH_ARBITRAGE' }
 ];
 
 export default async function () {
