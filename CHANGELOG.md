@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/pustovitDmytro/ianus/compare/v1.7.0...v1.7.1) (2022-08-17)
+
+
+### Fix
+
+* start arbitrage in main thread ([bb1e459](https://github.com/pustovitDmytro/ianus/commit/bb1e45928362b4c6e84d3c59c11fed8c6119014e))
+
 # [1.7.0](https://github.com/pustovitDmytro/ianus/compare/v1.6.3...v1.7.0) (2022-08-17)
 
 
