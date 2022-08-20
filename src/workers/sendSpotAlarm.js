@@ -13,6 +13,6 @@ export default async function (job) {
     return Base(job, {
         cache,
         template : 'BinanceSpotAlarm',
-        getHash  : (r, user, params) => `${user.tgChat}_${params.asset}`
+        getHash  : (r, user) => `${user.tgChat}_${r.asset}`
     });
 }
