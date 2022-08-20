@@ -1,3 +1,10 @@
+## [1.7.2](https://github.com/pustovitDmytro/ianus/compare/v1.7.1...v1.7.2) (2022-08-17)
+
+
+### Fix
+
+* arbitrage queue name ([bcddfdf](https://github.com/pustovitDmytro/ianus/commit/bcddfdf77f41d06c61d625753a82c51cc7d405e7))
+
 ## [1.7.1](https://github.com/pustovitDmytro/ianus/compare/v1.7.0...v1.7.1) (2022-08-17)
 
 
