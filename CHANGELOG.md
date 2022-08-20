@@ -1,3 +1,18 @@
+## [1.7.3](https://github.com/pustovitDmytro/ianus/compare/v1.7.2...v1.7.3) (2022-08-20)
+
+
+### Chore
+
+* update lock file ([eb3bd98](https://github.com/pustovitDmytro/ianus/commit/eb3bd9864cc0726439befdd5be86a324704693b6))
+
+### Fix
+
+* fixes spot alarm ([e365e7f](https://github.com/pustovitDmytro/ianus/commit/e365e7fcc0295ab64e623e8debf77b615ac1433a))
+
+### Upgrade
+
+* Pin dependency logger-decorator to 1.6.3 (#5) ([2546595](https://github.com/pustovitDmytro/ianus/commit/2546595e23dec9f7f21f5ebc7fd5473c17fe15e9)), closes [#5](https://github.com/pustovitDmytro/ianus/issues/5)
+
 ## [1.7.2](https://github.com/pustovitDmytro/ianus/compare/v1.7.1...v1.7.2) (2022-08-17)
 
 
