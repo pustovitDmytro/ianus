@@ -1,3 +1,10 @@
+## [1.7.5](https://github.com/pustovitDmytro/ianus/compare/v1.7.4...v1.7.5) (2022-09-23)
+
+
+### Fix
+
+* fixes SEND_SPOT_ALARM params ([7e6a24e](https://github.com/pustovitDmytro/ianus/commit/7e6a24e2f614aff1e18f986cfe999d0aa57adb69))
+
 ## [1.7.4](https://github.com/pustovitDmytro/ianus/compare/v1.7.3...v1.7.4) (2022-09-23)
 
 
