@@ -60,7 +60,7 @@ aliases:
     command: npm audit
   - &install
     name: Installing Dependencies
-    command: npm i
+    command: npm ci
   - &cache-modules
     key: -{{ checksum "package-lock.json" }}
     paths:
