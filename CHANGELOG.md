@@ -1,3 +1,15 @@
+## [1.7.4](https://github.com/pustovitDmytro/ianus/compare/v1.7.3...v1.7.4) (2022-09-23)
+
+
+### Chore
+
+* fixes circle-ci cache ([bdcf517](https://github.com/pustovitDmytro/ianus/commit/bdcf5179394eb4ee493742d1302b7298af422363))
+* fixes some npm audit vulnerabilities (#41) ([7d1b638](https://github.com/pustovitDmytro/ianus/commit/7d1b63816240be6b9b8941af951a8c1a2068169d)), closes [#41](https://github.com/pustovitDmytro/ianus/issues/41)
+
+### Fix
+
+* increase SEND_ALARM_QUEUE_TTL ([7d43983](https://github.com/pustovitDmytro/ianus/commit/7d439833694aad5cc519faf4611fc194dc1b1429))
+
 ## [1.7.3](https://github.com/pustovitDmytro/ianus/compare/v1.7.2...v1.7.3) (2022-08-20)
 
 
