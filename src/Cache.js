@@ -22,31 +22,23 @@ export default class Cache {
             database : redisConf.database
         });
         this.ttl = ttl / MS_TO_SEC;
-        this.connected = false;
         CACHES.push(this);
     }
 
     async connect() {
-        if (this.connected) return;
-
         try {
             await this.client.connect();
         } catch (error) {
             if (error.message !== 'Socket already opened') throw error;
         }
-
-        this.connected = true;
     }
 
     async close() {
-        if (!this.connected) return;
         try {
             await this.client.quit();
         } catch (error) {
             if (![ 'The client is closed', 'This socket has been ended by the other party' ].includes(error.message)) throw error;
         }
-
-        this.connected = false;
     }
 
     async saveAll(keys) {
