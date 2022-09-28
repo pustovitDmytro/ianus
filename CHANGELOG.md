@@ -1,3 +1,10 @@
+## [1.7.6](https://github.com/pustovitDmytro/ianus/compare/v1.7.5...v1.7.6) (2022-09-28)
+
+
+### Fix
+
+* allow reconnect cache on each command ([3484143](https://github.com/pustovitDmytro/ianus/commit/348414394a240aa03379ed298a866c8b181eac2f))
+
 ## [1.7.5](https://github.com/pustovitDmytro/ianus/compare/v1.7.4...v1.7.5) (2022-09-23)
 
 
