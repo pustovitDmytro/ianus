@@ -1,3 +1,10 @@
+## [1.7.7](https://github.com/pustovitDmytro/ianus/compare/v1.7.6...v1.7.7) (2022-10-20)
+
+
+### Upgrade
+
+* update redis lib ([c2d0a53](https://github.com/pustovitDmytro/ianus/commit/c2d0a530aa3c9a85c334cfe171c1c519b17e330c))
+
 ## [1.7.6](https://github.com/pustovitDmytro/ianus/compare/v1.7.5...v1.7.6) (2022-09-28)
 
 
