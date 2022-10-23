@@ -1,3 +1,10 @@
+## [1.7.8](https://github.com/pustovitDmytro/ianus/compare/v1.7.7...v1.7.8) (2022-10-23)
+
+
+### Fix
+
+* reconnect cache on second attempt ([37c0791](https://github.com/pustovitDmytro/ianus/commit/37c07910b4d15646a9e0d8492d3bc0c09f97b48c))
+
 ## [1.7.7](https://github.com/pustovitDmytro/ianus/compare/v1.7.6...v1.7.7) (2022-10-20)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "ianus",
-  "version": "1.7.7",
+  "version": "1.7.8",
   "description": "Binance Alarms",
   "main": "./lib",
   "scripts": {
