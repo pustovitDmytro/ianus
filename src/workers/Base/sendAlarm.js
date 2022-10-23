@@ -20,6 +20,11 @@ export default async function (job, {
         .slice(0, MAX_RESULTS)
         .map(r => getHash(r, user, params));
 
+    if (job.attemptsMade >= 1) {
+        pn.progress(0.05, 'Refreshing redis client');
+        await cache.reconnect();
+    }
+
     pn.progress(0.1, 'Checking cache for saved results');
 
     if (await cache.areAllSaved(hashes)) return { status: 'ALREADY_NOTIFIED' };

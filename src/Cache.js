@@ -12,6 +12,15 @@ export default class Cache {
         ttl
     }) {
         this.prefix = prefix;
+        this._redisConf = redisConf;
+        this.createClient();
+        this.ttl = ttl / MS_TO_SEC;
+        CACHES.push(this);
+    }
+
+    createClient() {
+        const redisConf = this._redisConf;
+
         this.client = createClient({
             socket : {
                 port : redisConf.port,
@@ -21,8 +30,11 @@ export default class Cache {
             password : redisConf.password,
             database : redisConf.database
         });
-        this.ttl = ttl / MS_TO_SEC;
-        CACHES.push(this);
+    }
+
+    async reconnect() {
+        this.close();
+        this.createClient();
     }
 
     async connect() {
