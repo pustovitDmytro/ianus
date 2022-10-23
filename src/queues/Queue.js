@@ -120,7 +120,9 @@ export default class Queue {
     }
 
     async findCompletedJobs() {
-        return this.queue.getJobs([ 'completed' ]);
+        const jobs = await this.queue.getJobs([ 'completed' ]);
+
+        return jobs.filter(j => j);
     }
 
     async close() {
