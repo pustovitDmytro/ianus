@@ -1,3 +1,14 @@
+## [1.7.9](https://github.com/pustovitDmytro/ianus/compare/v1.7.8...v1.7.9) (2022-10-24)
+
+
+### Chore
+
+* lower coverage ([068f792](https://github.com/pustovitDmytro/ianus/commit/068f792631bdac104d809edd600848050a252d3d))
+
+### Fix
+
+* fix null in findCompletedJobs ([bebe4d7](https://github.com/pustovitDmytro/ianus/commit/bebe4d7588fc8d5a09e21c66ac70ddb749c27f6c))
+
 ## [1.7.8](https://github.com/pustovitDmytro/ianus/compare/v1.7.7...v1.7.8) (2022-10-23)
 
 
