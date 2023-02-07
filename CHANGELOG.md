@@ -1,3 +1,25 @@
+# [1.8.0](https://github.com/pustovitDmytro/ianus/compare/v1.7.9...v1.8.0) (2023-02-07)
+
+
+### Chore
+
+* anti-terrorism disclaimer ([96327fe](https://github.com/pustovitDmytro/ianus/commit/96327fef4c90f65fd297960d73872398334774c5))
+* fixes eslint-plugin-unicorn version ([dd45e9a](https://github.com/pustovitDmytro/ianus/commit/dd45e9a86498e621de2cd9bc49aa1f8430c8ed6c))
+* fixes npm audit ([0500470](https://github.com/pustovitDmytro/ianus/commit/05004700c0fd75120bebf51a70e25dfee1e3b840))
+* Update devDependencies (non-major) ([01bd6c0](https://github.com/pustovitDmytro/ianus/commit/01bd6c09f1ba5886abdb991b436317f741eeb20b))
+* Update devDependencies (non-major) ([85a0161](https://github.com/pustovitDmytro/ianus/commit/85a0161b7426b877ec45f6956238f93810e5b3c9))
+* Update devDependencies (non-major) (#92) ([f492769](https://github.com/pustovitDmytro/ianus/commit/f492769892ff31c1dad30248c58ae7c5ae7aec85)), closes [#92](https://github.com/pustovitDmytro/ianus/issues/92)
+
+### Docs
+
+* add logo ([69a2e2b](https://github.com/pustovitDmytro/ianus/commit/69a2e2b3c7e4ad809379abd9d91bc39ffd3aaac2))
+* drop lgtm ([b1841f2](https://github.com/pustovitDmytro/ianus/commit/b1841f24770563faafb609444868658fba298b81))
+* update year in license ([64521cb](https://github.com/pustovitDmytro/ianus/commit/64521cb04f41c46b7bdcbba18bec8d4673736a31))
+
+### Update
+
+* change default BINANCE_REQUEST_QUEUE_TTL ([48d2bdc](https://github.com/pustovitDmytro/ianus/commit/48d2bdca1ed1d47a70952a575545fe552532d3a4))
+
 ## [1.7.9](https://github.com/pustovitDmytro/ianus/compare/v1.7.8...v1.7.9) (2022-10-24)
 
 
