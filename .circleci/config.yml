@@ -172,7 +172,7 @@ jobs:
                 command: if [ -z ${CIRCLE_SKIP_DEPLOY+x} ]; then npm run semantic-release;else echo 'job skipped';fi
   aws-update:
     environment:
-      - AWS_DEFAULT_REGION: eu-west-1
+      - AWS_DEFAULT_REGION: eu-central-1
     executor: aws-cli/default
     steps:
       - checkout

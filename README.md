@@ -2,16 +2,14 @@
 # ianus
 Binance Alarms
 
-[![Version][badge-vers]][npm]
-[![Bundle size][npm-size-badge]][npm-size-url]
-[![Downloads][npm-downloads-badge]][npm]
+[![Version][docker-version]][docker]
+[![Downloads][docker-pulls-badge]][docker]
 
 [![CodeFactor][codefactor-badge]][codefactor-url]
 [![SonarCloud][sonarcloud-badge]][sonarcloud-url]
 [![Codacy][codacy-badge]][codacy-url]
 [![Scrutinizer][scrutinizer-badge]][scrutinizer-url]
 
-[![Dependencies][badge-deps]][npm]
 [![Security][snyk-badge]][snyk-url]
 [![Build Status][tests-badge]][tests-url]
 [![Coverage Status][badge-coverage]][url-coverage]
@@ -86,7 +84,7 @@ to retrieve project information, check
 
 healthcheck:
 ```
-  /health
+  /admin/health
 ```
 
 ### Administration credentials
@@ -103,11 +101,14 @@ healthcheck:
 
 Make the changes to the code and tests. Then commit to your branch. Be sure to follow the commit message conventions. Read [Contributing Guidelines](.github/CONTRIBUTING.md) for details.
 
-[npm]: https://www.npmjs.com/package/ianus
+
+
+[docker-version]: https://img.shields.io/docker/v/pustovitdmytro/ianus-worker?sort=semver
+[docker-pulls-badge]: https://img.shields.io/docker/pulls/pustovitdmytro/ianus-admin
+[docker]: https://hub.docker.com/repository/docker/pustovitdmytro/ianus-admin/
+
 [github]: https://github.com/pustovitDmytro/ianus
 [coveralls]: https://coveralls.io/github/pustovitDmytro/ianus?branch=master
-[badge-deps]: https://img.shields.io/librariesio/release/npm/ianus.svg
-[badge-vers]: https://img.shields.io/npm/v/ianus.svg
 [badge-lic]: https://img.shields.io/github/license/pustovitDmytro/ianus.svg
 [badge-coverage]: https://coveralls.io/repos/github/pustovitDmytro/ianus/badge.svg?branch=master
 [url-coverage]: https://coveralls.io/github/pustovitDmytro/ianus?branch=master

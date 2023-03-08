@@ -40,10 +40,10 @@ function bullErrorHandler(error) {
     logger.error({ service: 'ExpressAdapter', error });
 }
 
-serverAdapter.setBasePath('/admin/bull');
+serverAdapter.setBasePath(`${config.web.prefix}/bull`);
 serverAdapter.setErrorHandler(bullErrorHandler);
 
-const auth = { login: 'admin', password: config.web.admin.password };
+const auth = { login: config.web.admin.user, password: config.web.admin.password };
 
 function checkBasicAuth(req, res, next) {
     const b64auth = (req.headers.authorization || '').split(' ')[1] || '';
@@ -73,14 +73,14 @@ function renderHealth(req, res) {
     res.sendStatus(successCode);
 }
 
-app.use('/health', renderHealth);
-app.use('/admin/bull', checkBasicAuth, serverAdapter.getRouter());
-app.use('/admin/info', checkBasicAuth, renderInfo);
+app.use(`${config.web.prefix}/health`, renderHealth);
+app.use(`${config.web.prefix}/bull`, checkBasicAuth, serverAdapter.getRouter());
+app.use(`${config.web.prefix}/info`, checkBasicAuth, renderInfo);
 
 async function setupMongo() {
     const middleware = await mongoExpress(mongoExpressConfig);
 
-    app.use('/admin/mongo', checkBasicAuth, middleware);
+    app.use(`${config.web.prefix}/mongo`, checkBasicAuth, middleware);
 }
 
 if (config.mongo) setupMongo();

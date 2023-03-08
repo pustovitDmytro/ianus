@@ -72,10 +72,12 @@ const schema = {
         }
     },
     web : {
-        port  : { $source: '{PORT}', $validate: [ 'required', 'port' ] },
-        start : { $source: '{WEB_START}', $validate: [ 'required', 'boolean' ] },
-        admin : {
-            password : { $source: '{BASIC_ADMIN_PASSWORD}', $validate: [ 'required', 'string' ] }
+        port   : { $source: '{PORT}', $validate: [ 'required', 'port' ] },
+        start  : { $source: '{WEB_START}', $validate: [ 'required', 'boolean' ] },
+        prefix : { $source: '{WEB_PREFIX}', $validate: [ 'required', 'path' ] },
+        admin  : {
+            password : { $source: '{BASIC_ADMIN_PASSWORD}', $validate: [ 'required', 'string' ] },
+            user     : { $source: '{BASIC_ADMIN_USER}', $validate: [ 'required', 'string' ] }
         }
     },
     telegram : {

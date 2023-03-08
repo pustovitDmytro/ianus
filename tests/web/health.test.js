@@ -12,7 +12,7 @@ before(async function () {
 
 test('Positive: ping health', async function () {
     await request
-        .get('/health')
+        .get('/admin/health')
         .expect(200)
         .expect(({ body }) => {
             assert.isEmpty(body);
