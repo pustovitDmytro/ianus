@@ -1,3 +1,14 @@
+## [1.10.1](https://github.com/pustovitDmytro/ianus/compare/v1.10.0...v1.10.1) (2023-03-10)
+
+
+### Chore
+
+* set cluster name from variable ([ebd68e6](https://github.com/pustovitDmytro/ianus/commit/ebd68e6369dfdd16202b815f4d5caea2188b2eb5))
+
+### Docs
+
+* adds readme for dockerhub ([c30c28d](https://github.com/pustovitDmytro/ianus/commit/c30c28dc9ded0157b1095cb97f3dfd58f564a84f))
+
 # [1.10.0](https://github.com/pustovitDmytro/ianus/compare/v1.9.0...v1.10.0) (2023-03-10)
 
 
