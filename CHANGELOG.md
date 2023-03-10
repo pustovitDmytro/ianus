@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/pustovitDmytro/ianus/compare/v1.8.0...v1.9.0) (2023-03-08)
+
+
+### New
+
+* allow WEB PREFIX ([1252303](https://github.com/pustovitDmytro/ianus/commit/1252303e69ff682bf19eb762c3a9eab9e0318168))
+
 # [1.8.0](https://github.com/pustovitDmytro/ianus/compare/v1.7.9...v1.8.0) (2023-02-07)
 
 
