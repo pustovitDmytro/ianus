@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/pustovitDmytro/ianus/compare/v1.9.0...v1.10.0) (2023-03-10)
+
+
+### New
+
+* use ioredis as single redis client ([daaa3a2](https://github.com/pustovitDmytro/ianus/commit/daaa3a24d11dfc0636b7313c51d3994430def1b6))
+
 # [1.9.0](https://github.com/pustovitDmytro/ianus/compare/v1.8.0...v1.9.0) (2023-03-08)
 
 
