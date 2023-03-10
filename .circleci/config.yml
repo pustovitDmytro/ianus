@@ -168,6 +168,9 @@ jobs:
             - restore_cache:
                 <<: *cache-defaults
             - run:
+                name: Install jq
+                command: sudo apt-get install jq -y
+            - run:
                 name: Create Release
                 command: if [ -z ${CIRCLE_SKIP_DEPLOY+x} ]; then npm run semantic-release;else echo 'job skipped';fi
   aws-update:
@@ -205,7 +208,9 @@ workflows:
           requires:
             - install
       - deploy:
-          context: npm-packages
+          context: 
+            - npm-packages
+            - docker
           requires:
             - test-coverage
             - test-package
