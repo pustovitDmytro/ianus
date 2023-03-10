@@ -180,8 +180,8 @@ jobs:
     steps:
       - checkout
       - aws-cli/setup
-      - run: aws ecs update-service --cluster $AWS_ECS_CLUSTER_NAME --service ianus-worker --force-new-deployment
-      - run: aws ecs update-service --cluster $AWS_ECS_CLUSTER_NAME --service ianus-admin --force-new-deployment
+      - run: aws ecs update-service --cluster $AWS_ECS_CLUSTER_NAME --service $AWS_WORKER_SERVICE --force-new-deployment
+      - run: aws ecs update-service --cluster $AWS_ECS_CLUSTER_NAME --service $AWS_ADMIN_SERVICE --force-new-deployment
 
 workflows:
   version: 2
