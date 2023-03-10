@@ -1,9 +1,9 @@
 import Bull from 'bull';
-import Redis from 'ioredis';
 import packageConfig from '../../package';
 import logger, { logDecorator }  from '../logger';
 import { getJobRunner } from '../workers/utils';
 import shutdown from '../shutdown';
+import getClient from '../redis';
 
 export const QUEUES = [];
 
@@ -13,17 +13,12 @@ function dumpJob(job) {
 
 export default class Queue {
     // https://docs.bullmq.io/bull/patterns/reusing-redis-connections
-    static getClient(redis, type) {
+    static getClient(type) {
         if (!this.clients) this.clients = {};
 
         if (this.clients[type]) return this.clients[type];
-        const client = new Redis({
-            port     : redis.port,
-            host     : redis.host,
-            db       : redis.db,
-            password : redis.password,
-            username : redis.username || null,
 
+        const client = getClient({
             maxRetriesPerRequest : null,
             enableReadyCheck     : false
         });
@@ -38,7 +33,6 @@ export default class Queue {
     }
 
     static createQuue({
-        redis,
         name,
         rateLimit
     }) {
@@ -50,7 +44,7 @@ export default class Queue {
             prefix : packageConfig.name,
 
             createClient(type) {
-                return Queue.getClient(redis, type);
+                return Queue.getClient(type);
             }
         });
     }

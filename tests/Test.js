@@ -4,7 +4,7 @@ import fse from 'fs-extra';
 import { getNamespace } from 'cls-hooked';
 import jsonQuery from 'json-query';
 import { MongoClient, ServerApiVersion } from 'mongodb';
-import { createClient } from 'redis';
+import getClient from '../src/redis';
 import { tmpFolder } from './constants';
 import { load } from './utils';
 import { trackedLogs } from './mock/utils';
@@ -13,6 +13,7 @@ import binanceP2PList from './fixtures/binance_p2p_list';
 
 const Queue = load('queues/Queue.js').default;
 const config = load('etc/config').default;
+const resetCache = load('Cache.js').reset;
 
 export const collections = {
     'binance_p2p_list' : binanceP2PList
@@ -21,6 +22,9 @@ export const collections = {
 export * from './utils';
 // eslint-disable-next-line import/export
 export * from './constants';
+export {
+    resetCache
+};
 
 export default class Test {
     async setTmpFolder() {
@@ -35,18 +39,9 @@ export default class Test {
         await Queue.clean(true);
         await Queue.reset();
 
-        const client = createClient({
-            socket : {
-                port : config.redis.port,
-                host : config.redis.host
-            },
-            username : config.redis.username,
-            password : config.redis.password,
-            database : config.redis.database
-        });
+        const client = getClient();
 
-        await client.connect();
-        await client.FLUSHDB();
+        await client.flushdb();
         await client.quit();
     }
 

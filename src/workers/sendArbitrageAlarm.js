@@ -5,8 +5,7 @@ import Base from './Base/sendAlarm';
 
 const cache = new Cache({
     prefix : config.cache.arbitrage.prefix,
-    ttl    : config.cache.arbitrage.ttl,
-    redis  : config.redis
+    ttl    : config.cache.arbitrage.ttl
 });
 
 export default async function (job) {

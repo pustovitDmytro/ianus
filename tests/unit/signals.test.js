@@ -1,6 +1,6 @@
-import '../Test';
 import { pause } from 'myrmidon';
 import { assert } from 'chai';
+import { resetCache } from '../Test';
 import { load } from '../utils';
 
 const { default:shutdown } = load('shutdown');
@@ -33,6 +33,7 @@ test('unhandledRejection', async function () {
 
 after(async function () {
     await pause(1000);
+    await resetCache();
     process.exit = old;
     shutdown.isShuttingDown = false;
 });

@@ -11,8 +11,7 @@ import Queue from './queues/Queue';
 import shutdown from './shutdown';
 
 const queues = Object.values(config.queue).map(conf => Queue.createQuue({
-    name  : conf.name,
-    redis : config.redis
+    name : conf.name
 }));
 
 const serverAdapter = new ExpressAdapter();
@@ -30,7 +29,7 @@ if (config.web.start) {
     server = app.listen(config.web.port, () => {
         const { port } = server.address();
 
-        logger.info(`WEB STARTING AT PORT ${port}`);
+        logger.info(`WEB STARTING AT PORT ${port}. API Prefix: ${config.web.prefix}`);
     });
 }
 

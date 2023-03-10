@@ -5,8 +5,7 @@ import Base from './Base/sendAlarm';
 
 const cache = new Cache({
     prefix : config.cache.p2p.prefix,
-    ttl    : config.cache.p2p.ttl,
-    redis  : config.redis
+    ttl    : config.cache.p2p.ttl
 });
 
 export default async function (job) {

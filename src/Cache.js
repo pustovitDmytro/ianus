@@ -1,4 +1,4 @@
-import { createClient } from 'redis';
+import createClient from './redis';
 import shutdown from './shutdown';
 
 const cachedValue = '1';
@@ -8,76 +8,54 @@ const CACHES = [];
 export default class Cache {
     constructor({
         prefix,
-        redis:redisConf,
         ttl
     }) {
         this.prefix = prefix;
-        this._redisConf = redisConf;
         this.createClient();
         this.ttl = ttl / MS_TO_SEC;
         CACHES.push(this);
     }
 
     createClient() {
-        const redisConf = this._redisConf;
-
-        this.client = createClient({
-            socket : {
-                port : redisConf.port,
-                host : redisConf.host
-            },
-            username : redisConf.username,
-            password : redisConf.password,
-            database : redisConf.database
-        });
+        this.client = createClient();
     }
 
-    async reconnect() {
-        this.close();
-        this.createClient();
-    }
-
-    async connect() {
-        try {
-            await this.client.connect();
-        } catch (error) {
-            if (error.message !== 'Socket already opened') throw error;
-        }
+    async reset() {
+        this._isClosing = false;
     }
 
     async close() {
-        try {
-            await this.client.quit();
-        } catch (error) {
-            if (![ 'The client is closed', 'This socket has been ended by the other party' ].includes(error.message)) throw error;
-        }
+        this._isClosing = true;
     }
 
     async saveAll(keys) {
-        await this.connect();
-
-        let chain = this.client.multi();
-
-        for (const key of keys) {
-            chain = chain.SETEX(`${this.prefix}${key}`, this.ttl, cachedValue);
-        }
-
-        return chain.exec();
-    }
-
-    async areAllSaved(keys) {
-        await this.connect();
-
-        let chain = this.client.multi();
+        if (this._isClosing) return;
+        let chain = this.client.pipeline();
 
         for (const key of keys) {
-            chain = chain.GET(`${this.prefix}${key}`);
+            chain = chain.setex(`${this.prefix}${key}`, this.ttl, cachedValue);
         }
 
         const res = await chain.exec();
 
-        return res.every(r => r === cachedValue);
+        return res.map(r => r[1]);
     }
+
+    async areAllSaved(keys) {
+        let chain = this.client.pipeline();
+
+        for (const key of keys) {
+            chain = chain.get(`${this.prefix}${key}`);
+        }
+
+        const res = await chain.exec();
+
+        return res.every(r => r[1] === cachedValue);
+    }
+}
+
+export function reset() {
+    return Promise.all(CACHES.map(cache => cache.reset()));
 }
 
 shutdown.register(

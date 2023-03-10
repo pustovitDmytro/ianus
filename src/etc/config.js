@@ -36,11 +36,13 @@ const schema = {
         db  : { $source: '{MONGO_DB_NAME}', $validate: [ 'required', 'string' ] }
     } : null,
     redis : {
-        port     : { $source: '{REDIS_PORT}', $validate: [ 'required', 'port' ] },
-        host     : { $source: '{REDIS_HOST}', $validate: [ 'required', 'hostname' ] },
-        db       : { $source: '{REDIS_DB}', $validate: [ 'integer' ] },
-        password : { $source: '{REDIS_PASSWORD}', $validate: [ 'string' ] },
-        username : { $source: '{REDIS_USER}', $validate: [ 'string' ] }
+        port           : { $source: '{REDIS_PORT}', $validate: [ 'required', 'port' ] },
+        host           : { $source: '{REDIS_HOST}', $validate: [ 'required', 'hostname' ] },
+        db             : { $source: '{REDIS_DB}', $validate: [ 'integer' ] },
+        password       : { $source: '{REDIS_PASSWORD}', $validate: [ 'string' ] },
+        username       : { $source: '{REDIS_USER}', $validate: [ 'string' ] },
+        connectTimeout : { $source: '{REDIS_CONNECT_TIMEOUT}', $validate: [ 'integer' ] },
+        tls            : { $source: '{REDIS_TLS}', $validate: [ 'boolean' ] }
     },
     queue : {
         binanceP2P     : queueSchema('BINANCE_P2P_QUEUE'),
