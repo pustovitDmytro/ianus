@@ -1,4 +1,4 @@
-FROM pustovitdmytro/ianus-base:1.12.0
+FROM pustovitdmytro/ianus-base:1.13.0
 
 WORKDIR /app
 
