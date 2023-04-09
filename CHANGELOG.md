@@ -1,3 +1,10 @@
+## [1.11.1](https://github.com/pustovitDmytro/ianus/compare/v1.11.0...v1.11.1) (2023-04-09)
+
+
+### Fix
+
+* enable kupipai queue ([6ba8e2b](https://github.com/pustovitDmytro/ianus/commit/6ba8e2b68e591ee886f825397ea03e5c6adc9703))
+
 # [1.11.0](https://github.com/pustovitDmytro/ianus/compare/v1.10.1...v1.11.0) (2023-04-09)
 
 
