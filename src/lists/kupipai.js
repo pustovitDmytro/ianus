@@ -16,7 +16,12 @@ export default class KupipaiList extends DataLoader {
             'min_perOne' : { $source: '{_MIN_PER_ONE}', $validate: [ 'integer' ] },
             'max_perOne' : { $source: '{_MAX_PER_ONE}', $validate: [ 'integer' ] },
             'min_rent'   : { $source: '{_MIN_RENT}', $validate: [ 'integer' ] },
-            'max_rent'   : { $source: '{_MAX_RENT}', $validate: [ 'integer' ] }
+            'max_rent'   : { $source: '{_MAX_RENT}', $validate: [ 'integer' ] },
+
+            'neg_location' : {
+                $source   : '{_NEG_LOCATION}',
+                $validate : [ { 'split': ',' }, { every: 'string' } ]
+            }
         }
     };
 
@@ -33,7 +38,12 @@ export default class KupipaiList extends DataLoader {
             'min_perOne' : { $source: '{min_per_one}', $validate: [ 'integer' ] },
             'max_perOne' : { $source: '{max_per_one}', $validate: [ 'integer' ] },
             'min_rent'   : { $source: '{min_rent}', $validate: [ 'integer' ] },
-            'max_rent'   : { $source: '{max_rent}', $validate: [ 'integer' ] }
+            'max_rent'   : { $source: '{max_rent}', $validate: [ 'integer' ] },
+
+            'neg_location' : {
+                $source   : '{neg_location}',
+                $validate : [ { 'split': ',' }, { every: 'string' } ]
+            }
         }
     };
 

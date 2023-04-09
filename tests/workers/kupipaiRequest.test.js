@@ -27,7 +27,9 @@ test('kupipaiRequest', async function () {
             'min_perOne' : 30_000,
             'min_rent'   : 4,
 
-            'max_perOne' : 40_000
+            'max_perOne' : 40_000,
+
+            'neg_location' : [ 'Новгород-Сіверський  Чернігівська', 'Шосткинський  Сумська', 'Каховський Херсонська' ]
         }
     };
     const data = {
@@ -49,7 +51,7 @@ test('kupipaiRequest', async function () {
         res[0],
         {
             user,
-            matching : 9
+            matching : 3
         }
     );
 });
