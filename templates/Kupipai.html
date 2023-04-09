@@ -1,0 +1,9 @@
+Hey, I've found something interesting. 
+Kupipai Alert hit the targets. 
+<% for(const result of results) {-%>
+  <%=result.date%>: <a href='<%=result.link%>'><%=result.identifier%></a>
+  <b>Price:</b> <%=result.price%> (<%=result.perOne.toFixed(1)%> per hectare)
+  <b>Rent:</b> <%=result.rent.toPrecision(3)%>%
+  <b>Location:</b> <%=result.location%>
+  <b>Cadastre:</b> <pre><%=result.cadastre%></pre>
+<% } -%>

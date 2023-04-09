@@ -51,13 +51,16 @@ const schema = {
         binanceRequest : queueSchema('BINANCE_REQUEST_QUEUE'),
         sendAlarm      : queueSchema('SEND_ALARM_QUEUE'),
         cleanup        : queueSchema('CLEANUP_QUEUE'),
-        arbitrage      : queueSchema('ARBITRAGE_QUEUE')
+        arbitrage      : queueSchema('ARBITRAGE_QUEUE'),
+        kupipai        : queueSchema('KUPIPAI_QUEUE'),
+        kupipaiRequest : queueSchema('KUPIPAI_REQUEST_QUEUE')
     },
     cache : {
         spot      : cacheSchema('SPOT_ALARM_CACHE'),
         earn      : cacheSchema('EARN_ALARM_CACHE'),
         p2p       : cacheSchema('P2P_ALARM_CACHE'),
-        arbitrage : cacheSchema('ARBITRAGE_ALARM_CACHE')
+        arbitrage : cacheSchema('ARBITRAGE_ALARM_CACHE'),
+        kupipai   : cacheSchema('KUPIPAI_ALARM_CACHE')
     },
     binanceP2PList : {
         $source   : { type: 'complex_array', prefix: 'BINANCE_P2P_LIST_' },

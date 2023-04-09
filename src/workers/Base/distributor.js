@@ -6,6 +6,7 @@ export default async function ({
     inputHash,
     queue,
     jobType,
+    getUserData = input => input.user,
     getJobData
 }) {
     const jobData = [];
@@ -15,15 +16,15 @@ export default async function ({
     pn.progress(0.3, `List Data Loaded: ${items.length} items found`);
 
     for (const input of items) {
-        const hash = inputHash(input);
+        const hash = inputHash(input, items);
         const exist = jobData.find(j => j.hash === hash);
 
         if (exist) {
-            exist.users.push(input.user);
+            exist.users.push(getUserData(input));
         } else {
             jobData.push({
                 hash,
-                ...getJobData(input)
+                ...getJobData(input, hash)
             });
         }
     }
