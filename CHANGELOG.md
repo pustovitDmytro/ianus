@@ -1,3 +1,14 @@
+# [1.12.0](https://github.com/pustovitDmytro/ianus/compare/v1.11.2...v1.12.0) (2023-04-09)
+
+
+### Fix
+
+* set maxresults from kupipai ([bb6ca53](https://github.com/pustovitDmytro/ianus/commit/bb6ca53ea5820d93e5dedfdb761e3c9635818976))
+
+### New
+
+* limit out results ([6e90188](https://github.com/pustovitDmytro/ianus/commit/6e90188f375237962a62f3df01a7da85058c7542))
+
 ## [1.11.2](https://github.com/pustovitDmytro/ianus/compare/v1.11.1...v1.11.2) (2023-04-09)
 
 
