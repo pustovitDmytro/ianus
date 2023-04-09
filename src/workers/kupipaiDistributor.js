@@ -4,7 +4,7 @@ import Base from './Base/distributor';
 
 const PARAMS = [ 'area', 'price', 'perOne', 'rent' ];
 
-function commonHash(items) {
+function common(items) {
     const params = {};
 
     PARAMS.forEach(p => params[p] = {});
@@ -29,11 +29,14 @@ function commonHash(items) {
         if (!params[param].max) params[param].max = defaultParams[param].max;
     });
 
-    return JSON.stringify(params);
+    return params;
 }
 
 function inputHash(p, items) {
-    return commonHash(items);
+    return JSON.stringify({
+        session : p.user.session,
+        filters : common(items)
+    });
 }
 
 const listLoader = new List();
@@ -52,9 +55,14 @@ export default async function () {
         queue      : kupipaiRequestQueue,
         jobType    : 'PROCESS_KUPIPAI_REQUEST',
         getUserData,
-        getJobData : (input, hash) => ({
-            filters : JSON.parse(hash),
-            users   : [ getUserData(input) ]
-        })
+        getJobData : (input, hash) => {
+            const { session, filters } =  JSON.parse(hash);
+
+            return {
+                users : [ getUserData(input) ],
+                session,
+                filters
+            };
+        }
     });
 }

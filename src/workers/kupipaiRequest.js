@@ -1,16 +1,21 @@
 import KupipaiAPI from '../api/KupipaiAPI';
 import Base from './Base/checkRequest';
 
-const api = new KupipaiAPI();
-
 const PARAMS = [ 'area', 'price', 'perOne', 'rent' ];
 
 export default async function (job) {
     return Base(job, {
         requestParams : data => {
-            return data.filters;
+            return {
+                session : data.session,
+                filters : data.filters
+            };
         },
-        request    : params => api.announcements(params),
+        request : params => {
+            const api = new KupipaiAPI(params.session);
+
+            return api.announcements(params.filters);
+        },
         isMatching : (item, user) => {
             return PARAMS.every(param => {
                 let matching = true;

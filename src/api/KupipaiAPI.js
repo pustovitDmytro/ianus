@@ -4,8 +4,15 @@ import { logDecorator }  from '../logger';
 
 @logDecorator({ level: 'verbose' })
 export default class KupipaiAPI extends BaseAPI {
-    constructor() {
+    constructor(sessionId) {
         super('https://kupipai.com.ua');
+        this.sessionId = sessionId;
+    }
+
+    getHeaders() {
+        return {
+            Cookie : `sessionid=${this.sessionId}`
+        };
     }
 
     async announcements(filters) {
@@ -25,7 +32,10 @@ export default class KupipaiAPI extends BaseAPI {
             ([ key, value ]) => `;${key}=${value}`
         ).join('');
 
-        const res = await this.get(`/api/v1/announcement/list/${query}/`, { limit: 100 });
+        const res = await this.get(
+            `/api/v1/announcement/list/${query}/`,
+            { limit: 100 }
+        );
 
         return res.data.items.map(d => dumpPai(d));
     }

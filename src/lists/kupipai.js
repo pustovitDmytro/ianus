@@ -5,7 +5,8 @@ export default class KupipaiList extends DataLoader {
 
     static envSchema = {
         'user' : {
-            'tgChat' : { $source: '{_USER_TG_CHAT}', $validate: [ 'required', 'integer' ] }
+            'tgChat'  : { $source: '{_USER_TG_CHAT}', $validate: [ 'required', 'integer' ] },
+            'session' : { $source: '{_SESSION}', $validate: [ 'required', 'string' ] }
         },
         'pai' : {
             'min_area'   : { $source: '{_MIN_AREA}', $validate: [ 'integer' ] },
@@ -21,7 +22,8 @@ export default class KupipaiList extends DataLoader {
 
     static mongoSchema = {
         'user' : {
-            'tgChat' : { $source: '{telegram_chat}', $validate: [ 'required', 'integer' ] }
+            'tgChat'  : { $source: '{telegram_chat}', $validate: [ 'required', 'integer' ] },
+            'session' : { $source: '{session}', $validate: [ 'required', 'string' ] }
         },
         'pai' : {
             'min_area'   : { $source: '{min_area}', $validate: [ 'integer' ] },

@@ -17,15 +17,18 @@ test('kupipai distributor', async function () {
     const job = new Job({});
     const res = await handler(job);
 
-    assert.lengthOf(res, 1);
+    assert.lengthOf(res, 2);
     const [ outJob ] = res;
+    const { filters, session } = JSON.parse(outJob.hash);
 
-    assert.deepEqual(JSON.parse(outJob.hash), {
+    assert.deepEqual(filters, {
         area   : { min: 2, max: 11 },
         price  : { min: 100_000, max: 400_000 },
         perOne : { min: 0, max: 50_000 },
         rent   : { min: 3, max: 100 }
     });
+
+    assert.exists(session);
 });
 
 after(async function () {
