@@ -26,6 +26,7 @@ export default async function (job) {
                 return matching;
             });
         },
-        jobType : 'SEND_KUPIPAI_ALARM'
+        maxResults : 12,
+        jobType    : 'SEND_KUPIPAI_ALARM'
     });
 }

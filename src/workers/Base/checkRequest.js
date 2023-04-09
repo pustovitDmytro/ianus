@@ -6,6 +6,7 @@ export default async function (job, {
     requestParams,
     request,
     isMatching,
+    maxResults = 7,
     jobType
 }) {
     const pn = new ProgressNotifier();
@@ -27,7 +28,7 @@ export default async function (job, {
                 user,
                 params,
                 results     : matching,
-                MAX_RESULTS : 7
+                MAX_RESULTS : maxResults
             });
 
             userResult.alarm = alarmJob.id;
