@@ -4,6 +4,7 @@ import binanceEarnQueue from '../queues/binanceEarnQueue';
 import binanceSpotQueue from '../queues/binanceSpotQueue';
 import cleanupQueue from '../queues/cleanupQueue';
 import arbitrageQueue from '../queues/arbitrageQueue';
+import kupipaiQueue from '../queues/kupipaiQueue';
 import templates from '../templates';
 
 const LIST = [
@@ -11,7 +12,8 @@ const LIST = [
     { queue: binanceEarnQueue, type: 'WATCH_EARN' },
     { queue: binanceSpotQueue, type: 'WATCH_SPOT' },
     { queue: cleanupQueue, type: 'RUN_CLEANUP' },
-    { queue: arbitrageQueue, type: 'WATCH_ARBITRAGE' }
+    { queue: arbitrageQueue, type: 'WATCH_ARBITRAGE' },
+    { queue: kupipaiQueue, type: 'WATCH_KUPIPAI' }
 ];
 
 export default async function () {
