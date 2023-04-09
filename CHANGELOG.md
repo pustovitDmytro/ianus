@@ -1,3 +1,10 @@
+## [1.11.2](https://github.com/pustovitDmytro/ianus/compare/v1.11.1...v1.11.2) (2023-04-09)
+
+
+### Fix
+
+* kupipai sessions ([dc8acea](https://github.com/pustovitDmytro/ianus/commit/dc8acea52d4dfb185531c0ee55a1b91cb6d29d0c))
+
 ## [1.11.1](https://github.com/pustovitDmytro/ianus/compare/v1.11.0...v1.11.1) (2023-04-09)
 
 
