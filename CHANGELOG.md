@@ -1,3 +1,14 @@
+# [1.11.0](https://github.com/pustovitDmytro/ianus/compare/v1.10.1...v1.11.0) (2023-04-09)
+
+
+### Chore
+
+* use service names from env ([2c6dc81](https://github.com/pustovitDmytro/ianus/commit/2c6dc81ed1dd77886feedff124d05ddb85747c60))
+
+### New
+
+* adds kupipai ([ca6fa42](https://github.com/pustovitDmytro/ianus/commit/ca6fa4216ff0f9bcab82e3c1a23ba85bf97a05e4))
+
 ## [1.10.1](https://github.com/pustovitDmytro/ianus/compare/v1.10.0...v1.10.1) (2023-03-10)
 
 
