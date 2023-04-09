@@ -37,7 +37,9 @@ export default class KupipaiAPI extends BaseAPI {
             { limit: 100 }
         );
 
-        return res.data.items.map(d => dumpPai(d));
+        return res.data.items
+            .map(d => dumpPai(d))
+            .sort((a, b) => b.rent - a.rent);
     }
 }
 
@@ -53,6 +55,6 @@ function dumpPai(pai) {
         perOne : pai.price / pai.area,
 
         location : pai.koatuuLocation,
-        date     : dayjs(pai.createdAt).format('DD MMMM')
+        date     : dayjs(pai.createdAt).format('DD MMM YYYY')
     };
 }

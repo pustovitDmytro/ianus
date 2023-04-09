@@ -24,7 +24,13 @@ export default async function (job, {
     if (await cache.areAllSaved(hashes)) return { status: 'ALREADY_NOTIFIED' };
 
     pn.progress(0.4, 'Found relevant results');
-    await telegram.send(user.tgChat, template, { user, params, results, MAX_RESULTS });
+    await telegram.send(user.tgChat, template, {
+        user,
+        params,
+        results : results.slice(0, MAX_RESULTS),
+        MAX_RESULTS,
+        total   : results.total
+    });
 
     pn.progress(0.8, 'Sent telegram notification');
     await cache.saveAll(hashes);
