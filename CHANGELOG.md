@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/pustovitDmytro/ianus/compare/v1.13.0...v1.13.1) (2023-04-16)
+
+
+### Fix
+
+* total count in alarms ([6470c0e](https://github.com/pustovitDmytro/ianus/commit/6470c0eb6e9ab2164c81524ab87212df260397c5))
+
 # [1.13.0](https://github.com/pustovitDmytro/ianus/compare/v1.12.0...v1.13.0) (2023-04-09)
 
 
