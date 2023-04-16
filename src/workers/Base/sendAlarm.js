@@ -29,7 +29,7 @@ export default async function (job, {
         params,
         results : results.slice(0, MAX_RESULTS),
         MAX_RESULTS,
-        total   : results.total
+        total   : results.length
     });
 
     pn.progress(0.8, 'Sent telegram notification');
