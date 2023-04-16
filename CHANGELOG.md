@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/pustovitDmytro/ianus/compare/v1.12.0...v1.13.0) (2023-04-09)
+
+
+### New
+
+* neg location for kupipai ([31e4d0d](https://github.com/pustovitDmytro/ianus/commit/31e4d0d32e79d2fd29d40809ed834e5ee993d0ad))
+
 # [1.12.0](https://github.com/pustovitDmytro/ianus/compare/v1.11.2...v1.12.0) (2023-04-09)
 
 
